@@ -65,9 +65,11 @@ const usersArray = [
 const userNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
+  const fullName = user.firstName + ' ' + user.lastName;
+  userNames.push(fullName);
 }
 
-// console.log('userNames', userNames);
+console.log('userNames', userNames);
 
 //  TASK 2 - for of loop
 
@@ -76,9 +78,13 @@ for (let user of usersArray) {
 const userFirstNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
+  userFirstNames.push(user.firstName);
+  //or
+  // const { firstName } = user;
+  // userFirstNames.push(firstName);
 }
 
-// console.log('userFirstNames', userFirstNames);
+console.log('userFirstNames', userFirstNames);
 
 //  TASK 3 - for of loop
 
@@ -87,8 +93,9 @@ for (let user of usersArray) {
 const userLastNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
+  userLastNames.push(user.lastName);
 }
-// console.log('userLastNames', userLastNames);
+console.log('userLastNames', userLastNames);
 
 //  TASK 4 - ES6 destructuring , for of loop, object literal (variable name as a property name and value)
 
@@ -101,6 +108,9 @@ const userCreditDetails = [];
 
 for (const user of usersArray) {
   // Your Code Here ...
+  const { firstName, lastName, balance } = user;
+  const obj = { firstName, lastName, balance };
+  userCreditDetails.push(obj);
 }
 
-// console.log('userCreditDetails', userCreditDetails);
+console.log('userCreditDetails', userCreditDetails);
