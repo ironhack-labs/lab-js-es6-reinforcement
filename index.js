@@ -65,9 +65,9 @@ const usersArray = [
 
 const userNames = [];
 for (let user of usersArray) {
+  userNames.push(user.firstName + " " + user.lastName)
   // Your Code Here ...
 }
-
 console.log('userNames', userNames);
 
 
@@ -91,6 +91,7 @@ console.log('userFirstNames', userFirstNames);
 // 1. push all of the last names into a new array `userLastNames
 const userLastNames = [];
 for (let user of usersArray) {
+  let 
      // Your Code Here ...
 }
 console.log('userLastNames', userLastNames);
