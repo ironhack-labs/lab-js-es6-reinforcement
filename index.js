@@ -94,7 +94,8 @@ console.log('userFirstNames', userFirstNames);
 const userLastNames = [];
 for (let user of usersArray) {
      // Your Code Here ...
-     
+     const lastName = `${user.lastName}`;
+     userLastNames.push(lastName);
 }
 console.log('userLastNames', userLastNames);
 
@@ -111,7 +112,9 @@ const userCreditDetails = [];
 
 for (const user of usersArray) {
   // Your Code Here ...
-  
+  const { firstName, lastName, balance} = user;
+  const obj = { firstName, lastName, balance };
+  userCreditDetails.push(obj);
 }
 
 console.log('userCreditDetails', userCreditDetails);
