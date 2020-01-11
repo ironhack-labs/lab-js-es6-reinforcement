@@ -114,7 +114,7 @@ console.log('=============================')
 // 3. push each new object into a new array `userCreditDetails`
 destructuring
 const userCreditDetails = [];
-//INCOMPLETE
+//INCOMPLETE - still receiving an error
 for (const user of usersArray) {
   // Your Code Here ...
   let userInfo = `${user.firstName} ${user.lastName}, balance: ${user.balance}`
