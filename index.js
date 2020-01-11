@@ -1,5 +1,4 @@
-const usersArray = [
-  {
+const usersArray = [{
     firstName: "Kirby",
     lastName: "Doyle",
     id: "b71794e5-851e-44b5-9eec-1dd4e897e3b8",
@@ -66,6 +65,8 @@ const usersArray = [
 const userNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
+  let fullName = `${user.firstName} ${user.lastName}`;
+  userNames.push(fullName);
 }
 
 console.log('userNames', userNames);
@@ -91,7 +92,7 @@ console.log('userFirstNames', userFirstNames);
 // 1. push all of the last names into a new array `userLastNames
 const userLastNames = [];
 for (let user of usersArray) {
-     // Your Code Here ...
+  // Your Code Here ...
 }
 console.log('userLastNames', userLastNames);
 
