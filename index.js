@@ -57,6 +57,7 @@ const usersArray = [
   }
 ];
 
+console.log('=============================')
 
 // TASK 1 - `for...of` loop and ES6 string literals `${}`
 // Using `for...of` loop iterate over the usersArray and 
@@ -66,11 +67,13 @@ const usersArray = [
 const userNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
-}
+  let fullName = `${user.firstName} ${user.lastName}`
+  userNames.push(fullName)
+  }
 
 console.log('userNames', userNames);
 
-
+console.log('=============================')
 
 //  TASK 2 - for of loop
 
@@ -79,11 +82,13 @@ console.log('userNames', userNames);
 const userFirstNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
+  let first = `${user.firstName}`
+  userFirstNames.push(first)
 }
 
 console.log('userFirstNames', userFirstNames);
 
-
+console.log('=============================')
 
 //  TASK 3 - for of loop
 
@@ -92,9 +97,12 @@ console.log('userFirstNames', userFirstNames);
 const userLastNames = [];
 for (let user of usersArray) {
      // Your Code Here ...
+  let last = `${user.lastName}`
+  userLastNames.push(last)
 }
 console.log('userLastNames', userLastNames);
 
+console.log('=============================')
 
 
 
@@ -106,9 +114,11 @@ console.log('userLastNames', userLastNames);
 // 3. push each new object into a new array `userCreditDetails`
 destructuring
 const userCreditDetails = [];
-
+//INCOMPLETE
 for (const user of usersArray) {
   // Your Code Here ...
+  let userInfo = `${user.firstName} ${user.lastName}, balance: ${user.balance}`
+  userCreditDetails.push(userInfo)
 }
 
 console.log('userCreditDetails', userCreditDetails);
