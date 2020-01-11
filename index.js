@@ -112,3 +112,25 @@ for (const user of usersArray) {
 }
 
 console.log('userCreditDetails', userCreditDetails);
+
+// TASK 5 - Create a function `genderView` which will return two arrays new arrays femaleUsers and maleUsers 
+// in a object depending on the gender fill them with strings containing users’ first and last names
+
+
+function genderView( arr ) {
+  const genderObj = {
+    male: [],
+    female: []
+  };
+
+  arr.map( ob => {
+    let {firstName, lastName, gender} = ob;
+    if ( gender === 'male') genderObj.male.push(`${firstName} ${lastName}`)
+    if ( gender === 'female') genderObj.female.push(`${firstName} ${lastName}`)
+  })
+
+  return genderObj;  
+}
+
+
+
