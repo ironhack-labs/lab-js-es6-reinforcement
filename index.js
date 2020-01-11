@@ -65,7 +65,8 @@ const usersArray = [
 
 const userNames = [];
 for (let user of usersArray) {
-  // Your Code Here ...
+  let fullName =  `${user.firstName} ${user.lastName}`;
+  userNames.push(fullName);
 }
 
 console.log('userNames', userNames);
@@ -78,7 +79,7 @@ console.log('userNames', userNames);
 // 1. push all first names into a new array `userFirstNames
 const userFirstNames = [];
 for (let user of usersArray) {
-  // Your Code Here ...
+  userFirstNames.push(user.firstName)
 }
 
 console.log('userFirstNames', userFirstNames);
@@ -91,7 +92,7 @@ console.log('userFirstNames', userFirstNames);
 // 1. push all of the last names into a new array `userLastNames
 const userLastNames = [];
 for (let user of usersArray) {
-     // Your Code Here ...
+ userLastNames.push(user.lastName)
 }
 console.log('userLastNames', userLastNames);
 
@@ -104,11 +105,16 @@ console.log('userLastNames', userLastNames);
 // 1. destructure `firstName`, `lastName` and `balance` from each user
 // 2. After destructuring create a new object using object literal (only name of variable) consisting of `firstName`, `lastName` and `balance` and 
 // 3. push each new object into a new array `userCreditDetails`
-destructuring
 const userCreditDetails = [];
 
 for (const user of usersArray) {
-  // Your Code Here ...
+  let {firstName, lastName, balance} = user;
+  let newUser = {
+    nameFirst: firstName,
+    nameLast: lastName,
+    accountBalance: balance
+  }
+  userCreditDetails.push(newUser);
 }
 
 console.log('userCreditDetails', userCreditDetails);
