@@ -72,31 +72,20 @@ for (let user of usersArray) {
 console.log('userNames', userNames);
 
 
+console.log("======================")
 
 //  TASK 2 - for of loop
-
 // Using `for...of` loop iterate over the `usersArray` 
 // 1. push all first names into a new array `userFirstNames
 const userFirstNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
+  let first = `${user.firstName}`;
+  userFirstNames.push(first);
 }
-
 console.log('userFirstNames', userFirstNames);
 
-
-
-//  TASK 3 - for of loop
-
-// Using `for...of` loop iterate over the `usersArray` 
-// 1. push all of the last names into a new array `userLastNames
-const userLastNames = [];
-for (let user of usersArray) {
-  // Your Code Here ...
-}
-console.log('userLastNames', userLastNames);
-
-
+console.log("======================")
 
 
 //  TASK 4 - ES6 destructuring , for of loop, object literal (variable name as a property name and value)
