@@ -65,15 +65,14 @@ const usersArray = [{
 const userNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
-  let fullName = `${user.firstName} ${user.lastName}`;
-  userNames.push(fullName);
+  userNames.push(`${user.firstName} ${user.lastName}`);
 
   //or this:
-  // let { firstName, lastName} = user;
-  // userNames.push(`${firstName} ${lastName}`)
+  // let fullName = `${user.firstName} ${user.lastName}`;
+  // userNames.push(fullName);
 }
 
-console.log('userNames', userNames);
+// console.log('userNames', userNames);
 
 
 
@@ -84,11 +83,14 @@ console.log('userNames', userNames);
 const userFirstNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
-  let firstNameOnly = `${user.firstName}`;
-  userFirstNames.push(firstNameOnly)
+  userFirstNames.push(user.firstName);
+
+  //or this
+  // let firstNameOnly = `${user.firstName}`;
+  // userFirstNames.push(firstNameOnly);
 }
 
-console.log('userFirstNames', userFirstNames);
+// console.log('userFirstNames', userFirstNames);
 
 
 
@@ -99,10 +101,13 @@ console.log('userFirstNames', userFirstNames);
 const userLastNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
-  let lastNamesOnly = `${user.lastName}`;
-  userLastNames.push(lastNamesOnly)
+  userLastNames.push(user.lastName);
+
+  //or this
+  // let lastNamesOnly = `${user.lastName}`;
+  // userLastNames.push(lastNamesOnly)
 }
-console.log('userLastNames', userLastNames);
+// console.log('userLastNames', userLastNames);
 
 
 //  TASK 4 - ES6 destructuring , for of loop, object literal (variable name as a property name and value)
@@ -113,39 +118,47 @@ console.log('userLastNames', userLastNames);
 // 3. push each new object into a new array `userCreditDetails`
 // destructuring
 const userCreditDetails = [];
+
 for (const user of usersArray) {
-  // Your Code Here ...
+  let {
+    firstName,
+    lastName,
+    balance
+  } = user;
+  userCreditDetails.push({
+    firstName,
+    lastName,
+    balance
+  });
+  // or:
+  // const data = { firstName, lastName, balance };
+  // userCreditDetails.push(data);
+}
+
+// *******************************************************************************************
+// SIDE NOTE: HOW WE CAN NAME PROPERTIES OF A NEWLY CREATED OBJECT
+
+const userCreditDetails = [];
+for (let user of usersArray) {
   const {
     firstName,
     lastName,
     balance
   } = user;
-
-  userCreditDetails.push({
+  // 1ST WAY:
+  const newUser1 = {
     firstName,
-    lastName,
-    balance
-  })
+    lastName, // lastName: lastName,
+    balance // balance:balance
+  };
 
-  // or create a new object and push it in the array
-
-  // let newUser = {
-  //   firstName,
-  //   lastName,
-  //   balance
-  // };
-  // userCreditDetails.push(newUser)
-
-
-  //or this
-  // const newObj = {
-  //   name: firstName, 
-  //   familyName: lastName,
-  //   accountBalance: balance
-  // }
+  const newObj2 = {
+    // name is the new property; firstName comes from the object destructuring (const { firstName, lastName, balance } = user;) and it represents the value we attach to name
+    name: firstName,
+    familyName: lastName, // the same as above
+    accountBalance: balance // the same as above
+  };
   // userCreditDetails.push(newObj)
 
+  //   userCreditDetails.push({ firstName, lastName, balance });
 }
-
-
-console.log('userCreditDetails', userCreditDetails);
