@@ -58,14 +58,16 @@ const usersArray = [
 ];
 
 
+
 // TASK 1 - `for...of` loop and ES6 string literals `${}`
 // Using `for...of` loop iterate over the usersArray and 
 // 1. using ES 6 string interpolation create a string containing full name
 // 2. push that string into a new array `userNames`
 
 const userNames = [];
-for (let user of usersArray) {
-  // Your Code Here ...
+for (let user of usersArray) {  
+  console.log(`${user.firstName} ${user.lastName}`)
+  userNames.push(`${user.firstName} ${user.lastName}`)
 }
 
 console.log('userNames', userNames);
@@ -78,7 +80,7 @@ console.log('userNames', userNames);
 // 1. push all first names into a new array `userFirstNames
 const userFirstNames = [];
 for (let user of usersArray) {
-  // Your Code Here ...
+  userFirstNames.push(`${user.firstName}`)
 }
 
 console.log('userFirstNames', userFirstNames);
@@ -91,7 +93,7 @@ console.log('userFirstNames', userFirstNames);
 // 1. push all of the last names into a new array `userLastNames
 const userLastNames = [];
 for (let user of usersArray) {
-     // Your Code Here ...
+     userLastNames.push(`${user.lastName}`)
 }
 console.log('userLastNames', userLastNames);
 
@@ -104,11 +106,18 @@ console.log('userLastNames', userLastNames);
 // 1. destructure `firstName`, `lastName` and `balance` from each user
 // 2. After destructuring create a new object using object literal (only name of variable) consisting of `firstName`, `lastName` and `balance` and 
 // 3. push each new object into a new array `userCreditDetails`
-destructuring
+// destructuring
 const userCreditDetails = [];
 
 for (const user of usersArray) {
-  // Your Code Here ...
+  
+  const {firstName, lastName, balance} = user
+
+  const userNuevoCreditDetails = {firstName, lastName, balance};
+
+  userCreditDetails.push(userNuevoCreditDetails)
+
+  console.log(firstName)
 }
 
 console.log('userCreditDetails', userCreditDetails);
