@@ -136,7 +136,11 @@ function genderView(arrUser) {
   } 
   return users
 }
-
 genderView(usersArray)
+
 //Task 6:
 //Use the returned object from the previous function and print how many female and how many male users there are.
+
+const howMany = genderView(usersArray)
+console.log(`There are : ${howMany.femaleUsers.length} females`)
+console.log(`There are : ${howMany.maleUsers.length} males`)
