@@ -124,7 +124,7 @@ userCreditDetails.push(userNewCreditDetails)
 console.log('userCreditDetails', userCreditDetails);
 
 // Task 5:
-// Create a function `genderView` which will return two arrays new arrays femaleUsers and maleUsers in a object depending on the gender fill them with strings containing users’ first and last names
+// Create a function `genderVieww` which will return two arrays new arrays femaleUsers and maleUsers in a object depending on the gender fill them with strings containing users’ first and last names
 
 function genderView(arrObjets) {
 
