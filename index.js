@@ -69,7 +69,7 @@ for (let user of usersArray) {
 };
 
 console.log(userNames);
-// console.log('userNames', userNames);
+// console.log('userNames', userNames); // GETTING UNDEFINED ON LOG
 
 
 
