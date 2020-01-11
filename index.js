@@ -118,3 +118,32 @@ for (const user of usersArray) {
 }
 
 console.log('userCreditDetails', userCreditDetails);
+
+// Task 5:
+// Create a function `genderView` which will return two arrays new arrays femaleUsers and maleUsers. 
+// In a object depending on the gender fill them with strings containing users’ first and last names.
+
+const genderObj = {
+  femaleUsers: [],
+  maleUsers: []
+}
+
+let genderView = (usersArr) => {
+  for (users of usersArr) {
+    let {firstName, lastName, gender} = users;
+    if (gender === "male") {
+      genderObj.maleUsers.push(`${firstName} ${lastName}`);
+    } else {
+      genderObj.femaleUsers.push(`${firstName} ${lastName}`);
+    }
+  }
+  return genderObj;
+}
+
+genderView(usersArray);
+
+
+// Task 6:
+// Use the returned object from the previous function and print how many female and how many male users there are.
+
+console.log(`We have ${genderObj.femaleUsers.length} female users and ${genderObj.maleUsers.length} male users`);
