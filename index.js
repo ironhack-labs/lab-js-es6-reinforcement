@@ -65,7 +65,9 @@ const usersArray = [
 
 const userNames = [];
 for (let user of usersArray) {
-  // Your Code Here ...
+  let fullName = (`usersArray.${firstName} + usersArray.${lastName}`)
+
+  userNames.push(`${fullName}`)
 }
 
 console.log('userNames', userNames);
