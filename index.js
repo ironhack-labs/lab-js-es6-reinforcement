@@ -67,9 +67,14 @@ console.log('=============================')
 const userNames = [];
 for (let user of usersArray) {
   // Your Code Here ...
-  let fullName = `${user.firstName} ${user.lastName}`
-  userNames.push(fullName)
-  }
+  //Structuring
+  let {firstName, lastName} = user
+  userNames.push(`${firstName}${lastName}`)
+
+  //Other Format
+  // let fullName = `${user.firstName} ${user.lastName}`
+  // userNames.push(fullName)
+}
 
 console.log('userNames', userNames);
 
@@ -117,8 +122,18 @@ const userCreditDetails = [];
 //INCOMPLETE - still receiving an error
 for (const user of usersArray) {
   // Your Code Here ...
-  let userInfo = `${user.firstName} ${user.lastName}, balance: ${user.balance}`
-  userCreditDetails.push(userInfo)
+ const {firstName, lastName, balance} = user;
+ 
+  //One Way
+  // let newUser = {
+  //   firstName, 
+  //   lastName, 
+  //   balance
+  // };
+  // userCreditDetails.push(newUser)
+
+  //Shorthand
+  userCreditDetails.push({firstName, lastName, balance});
 }
 
 console.log('userCreditDetails', userCreditDetails);
