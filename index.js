@@ -63,6 +63,8 @@ const usersArray = [
 // 1. using ES 6 string interpolation create a string containing full name
 // 2. push that string into a new array `userNames`
 
+///OPTION 1
+
 const userNames = [];
   for (let user of usersArray) {
     userNames.push(user.firstName + " " + user.lastName)
@@ -70,7 +72,23 @@ const userNames = [];
 }
 console.log('userNames', userNames);
 
+///OPTION 2
 
+const userNames2 = []
+for (let user of usersArray) {
+  let {firstName, lastName} = user;
+  userNames2.push(`${firstName} ${lastName}`)
+}
+
+console.log('userNames', userNames2);
+
+///OPTION 3
+const userNames3 = []
+for (let user of usersArray) {
+  let fullName = `${user.firstName} ${user.lastName}`;
+  userNames3.push(fullName)
+}
+console.log('userNames', userNames3);
 
 //  TASK 2 - for of loop
 
@@ -110,10 +128,28 @@ const userCreditDetails = [];
 
 for (const user of usersArray) {
   const { firstName, lastName, balance } = user;
-  const newUserArray = { firstName, lastName, balance };
+
+  ///OPTION 1
+  const newUserArray = { 
+    firstName,
+    lastName, 
+    balance 
+  };
+
+  //es6 OPTION 2
+  const newUserArray = { 
+    name: firstName,
+    familyName: lastName, 
+    accountBalance: balance 
+  };
   userCreditDetails.push(newUserArray);
   // Your Code Here ...
 }
+
+///inside .push({}) put curly braces to be sure it is going to be an object 
+///OPTION 3 
+
+userCreditDetails.push({firstName, lastName, balance})
 
 console.log('userCreditDetails', userCreditDetails);
 
