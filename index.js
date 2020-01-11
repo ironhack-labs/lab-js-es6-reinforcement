@@ -67,6 +67,10 @@ for (let user of usersArray) {
   // Your Code Here ...
   let fullName = `${user.firstName} ${user.lastName}`;
   userNames.push(fullName);
+
+  //or this:
+  // let { firstName, lastName} = user;
+  // userNames.push(`${firstName} ${lastName}`)
 }
 
 console.log('userNames', userNames);
@@ -101,19 +105,38 @@ for (let user of usersArray) {
 console.log('userLastNames', userLastNames);
 
 
-
-//TASK 4 INCOMPLETE
 //  TASK 4 - ES6 destructuring , for of loop, object literal (variable name as a property name and value)
 
 // Using `for...of` loop iterate over the `usersArray` 
 // 1. destructure `firstName`, `lastName` and `balance` from each user
 // 2. After destructuring create a new object using object literal (only name of variable) consisting of `firstName`, `lastName` and `balance` and 
 // 3. push each new object into a new array `userCreditDetails`
-destructuring
+// destructuring
 const userCreditDetails = [];
-
 for (const user of usersArray) {
   // Your Code Here ...
+  const {
+    firstName,
+    lastName,
+    balance
+  } = user;
+
+  let newUser = {
+    firstName,
+    lastName,
+    balance
+  };
+
+  //or this
+  // const newObj = {
+  //   name: firstName, 
+  //   familyName: lastName,
+  //   accountBalance: balance
+  // }
+  userCreditDetails.push(newUser)
+
+  // userCreditDetails.push({ firstName, lastName, balance})
 }
+
 
 console.log('userCreditDetails', userCreditDetails);
