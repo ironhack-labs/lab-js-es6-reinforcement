@@ -65,7 +65,8 @@ const usersArray = [
 
 const userNames = [];
 for (let user of usersArray) {
-  // Your Code Here ...
+  
+  userNames.push(`${user.firstName} ${user.lastName}`)
 }
 
 console.log('userNames', userNames);
@@ -78,7 +79,7 @@ console.log('userNames', userNames);
 // 1. push all first names into a new array `userFirstNames
 const userFirstNames = [];
 for (let user of usersArray) {
-  // Your Code Here ...
+  userFirstNames.push(user.firstName)
 }
 
 console.log('userFirstNames', userFirstNames);
@@ -91,7 +92,7 @@ console.log('userFirstNames', userFirstNames);
 // 1. push all of the last names into a new array `userLastNames
 const userLastNames = [];
 for (let user of usersArray) {
-     // Your Code Here ...
+ userLastNames.push(user.firstName)
 }
 console.log('userLastNames', userLastNames);
 
@@ -104,11 +105,43 @@ console.log('userLastNames', userLastNames);
 // 1. destructure `firstName`, `lastName` and `balance` from each user
 // 2. After destructuring create a new object using object literal (only name of variable) consisting of `firstName`, `lastName` and `balance` and 
 // 3. push each new object into a new array `userCreditDetails`
-destructuring
+
 const userCreditDetails = [];
 
+
+
 for (const user of usersArray) {
-  // Your Code Here ...
+
+const {firstName, lastName, balance} = user
+
+const userNewCreditDetails = {firstName, lastName, balance};
+
+userCreditDetails.push(userNewCreditDetails)
+  
+  
 }
 
 console.log('userCreditDetails', userCreditDetails);
+
+// Task 5:
+// Create a function `genderView` which will return two arrays new arrays femaleUsers and maleUsers in a object depending on the gender fill them with strings containing users’ first and last names
+
+function genderView(arrObjets) {
+
+  const maleUsers = [];
+  const femaleUsers = [];
+
+  for (const user of usersArray) {
+
+    if(user.gender === "male")
+    maleUsers.push(user)
+
+  }
+
+  console.log(maleUsers)
+}
+
+
+
+// Task 6:
+// Use the returned object from the previous function and print how many female and how many male users there are.
