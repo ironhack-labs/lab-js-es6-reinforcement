@@ -121,11 +121,21 @@ for (const user of usersArray) {
     balance
   } = user;
 
-  let newUser = {
+  userCreditDetails.push({
     firstName,
     lastName,
     balance
-  };
+  })
+
+  // or create a new object and push it in the array
+
+  // let newUser = {
+  //   firstName,
+  //   lastName,
+  //   balance
+  // };
+  // userCreditDetails.push(newUser)
+
 
   //or this
   // const newObj = {
@@ -133,9 +143,8 @@ for (const user of usersArray) {
   //   familyName: lastName,
   //   accountBalance: balance
   // }
-  userCreditDetails.push(newUser)
+  // userCreditDetails.push(newObj)
 
-  // userCreditDetails.push({ firstName, lastName, balance})
 }
 
 
