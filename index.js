@@ -109,8 +109,11 @@ const userCreditDetails = [];
 for (const user of usersArray) {
   // Your Code Here ...
   const { firstName, lastName, balance } = user;
-  const obj = { firstName, lastName, balance };
-  userCreditDetails.push(obj);
+  //1.
+  userCreditDetails.push({ firstName, lastName, balance });
+  //2.
+  // const obj = { firstName, lastName, balance };
+  // userCreditDetails.push(obj);
 }
 
 console.log('userCreditDetails', userCreditDetails);
