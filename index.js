@@ -63,8 +63,8 @@ const usersArray = [{
 // 2. push that string into a new array `userNames`
 
 const userNames = [];
+
 for (let user of usersArray) {
-  // Your Code Here ...
   let fullName = `${user.firstName} ${user.lastName}`;
   userNames.push(fullName);
 }
@@ -78,8 +78,10 @@ console.log('userNames', userNames);
 // Using `for...of` loop iterate over the `usersArray` 
 // 1. push all first names into a new array `userFirstNames
 const userFirstNames = [];
+
 for (let user of usersArray) {
-  // Your Code Here ...
+  let first = `${user.firstName}`;
+  userFirstNames.push(first);
 }
 
 console.log('userFirstNames', userFirstNames);
@@ -91,10 +93,11 @@ console.log('userFirstNames', userFirstNames);
 // 1. push all of the last names into a new array `userLastNames
 const userLastNames = [];
 for (let user of usersArray) {
-  // Your Code Here ...
+  let last = `${user.lastName}`;
+  userLastNames.push(last);
 }
-console.log('userLastNames', userLastNames);
 
+console.log('userLastNames', userLastNames);
 
 
 
@@ -137,3 +140,23 @@ for (const user of usersArray) {
 }
 
 console.log('userCreditDetails', userCreditDetails);
+
+
+
+// Task 5:
+// Create a function `genderView` which will return two new arrays, femaleUsers and maleUsers, in a object depending on the gender fill them with strings containing users’ first and last names
+
+
+
+// Task 6:
+// Use the returned object from the previous function and print how many female and how many male users there are.
+
+
+
+// Task 7:
+// Find all users whose balance is greater then 20000 and send them personalized message offering some promotion
+
+
+
+// Task 8:
+// Loop through usersArray and make all users active (use ... with objects :wink:) (edited) 
