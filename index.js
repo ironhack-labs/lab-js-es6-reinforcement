@@ -123,8 +123,10 @@ const userCreditDetails = [];
 for (const user of usersArray) {
   // Your Code Here ...
  const {firstName, lastName, balance} = user;
- 
-  //One Way
+ //Shorthand
+ userCreditDetails.push({firstName, lastName, balance});
+
+  //Another Way
   // let newUser = {
   //   firstName, 
   //   lastName, 
@@ -132,8 +134,6 @@ for (const user of usersArray) {
   // };
   // userCreditDetails.push(newUser)
 
-  //Shorthand
-  userCreditDetails.push({firstName, lastName, balance});
 }
 
 console.log('userCreditDetails', userCreditDetails);
