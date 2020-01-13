@@ -162,3 +162,27 @@ for (let user of usersArray) {
 
   //   userCreditDetails.push({ firstName, lastName, balance });
 }
+
+
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Additional tasks from this lab:
+
+  Task 5:
+  Create a
+function `genderView`
+which will
+return two new arrays, femaleUsers and maleUsers, in a object depending on the gender fill them with strings containing users’ first and last names
+
+
+Task 6:
+  Use the returned object from the previous
+function and print how many female and how many male users there are.
+
+
+Task 7:
+  Find all users whose balance is greater then 20000 and send them personalized message offering some promotion
+
+
+Task 8:
+  Loop through usersArray and make all users active(use...with objects: wink: )
