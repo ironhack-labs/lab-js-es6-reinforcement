@@ -68,13 +68,11 @@ for (let user of usersArray) {
   let fullName = `${user.firstName} ${user.lastName}`;
   userNames.push(fullName);
 }
-
 console.log('userNames', userNames);
-
+// *******************************************************************************************
 
 
 //  TASK 2 - for of loop
-
 // Using `for...of` loop iterate over the `usersArray` 
 // 1. push all first names into a new array `userFirstNames
 const userFirstNames = [];
@@ -83,9 +81,8 @@ for (let user of usersArray) {
   let first = `${user.firstName}`;
   userFirstNames.push(first);
 }
-
 console.log('userFirstNames', userFirstNames);
-
+// *******************************************************************************************
 
 
 //  TASK 3 - for of loop
@@ -96,9 +93,8 @@ for (let user of usersArray) {
   let last = `${user.lastName}`;
   userLastNames.push(last);
 }
-
 console.log('userLastNames', userLastNames);
-
+// *******************************************************************************************
 
 
 //  TASK 4 - ES6 destructuring , for of loop, object literal (variable name as a property name and value)
@@ -117,6 +113,7 @@ for (const user of usersArray) {
     lastName,
     balance
   } = user;
+
   // let newUser = {
   //   name: firstName,
   //   lastName,
@@ -138,25 +135,90 @@ for (const user of usersArray) {
     balance
   })
 }
-
 console.log('userCreditDetails', userCreditDetails);
-
+// *******************************************************************************************
 
 
 // Task 5:
 // Create a function `genderView` which will return two new arrays, femaleUsers and maleUsers, in a object depending on the gender fill them with strings containing users’ first and last names
 
+//One solution:
+function genderView(arr) {
+  const femaleUsers = arr
+    .filter(user => {
+      return user.gender === 'female';
+    })
+    .map(female => {
+      const {
+        firstName,
+        lastName
+      } = female;
+      return `${firstName}, ${lastName}`;
+    });
+
+  const maleUsers = arr
+    .filter(user => {
+      return user.gender === 'male';
+    })
+    .map(male => {
+      const {
+        firstName,
+        lastName
+      } = male;
+      return `${firstName}, ${lastName}`;
+    });
+
+  return {
+    femaleUsers,
+    maleUsers
+  };
+}
+console.log(genderView(usersArray));
+
+//Better solution
+const returnedObj2 = {};
+
+function genderView2(arr) {
+  arr.forEach(user => {
+    const {
+      firstName,
+      lastName
+    } = user;
+    if (!returnedObj2[user.gender]) {
+      returnedObj2[user.gender] = [`${firstName}, ${lastName}`]
+    } else {
+      returnedObj2[user.gender].push(`${firstName}, ${lastName}`);
+    }
+  })
+  return returnedObj2;
+}
+console.log(genderView2(usersArray));
+// *******************************************************************************************
 
 
 // Task 6:
 // Use the returned object from the previous function and print how many female and how many male users there are.
+// 1. from the first function genderView(arr)
+const returnedObj = genderView(usersArray);
+console.log(`There are ${returnedObj.maleUsers.length} male users and ${returnedObj.femaleUsers.length} female users`);
 
+// 2. from the second function genderView2(arr);
+console.log(`There are ${returnedObj2.male.length} male users and ${returnedObj2.female.length} female users`);
+// *******************************************************************************************
 
 
 // Task 7:
 // Find all users whose balance is greater then 20000 and send them personalized message offering some promotion
 
+// *******************************************************************************************
 
 
 // Task 8:
-// Loop through usersArray and make all users active (use ... with objects :wink:) (edited) 
+// Loop through usersArray and make all users active (use ... with objects :wink:)
+const activeUsers = usersArray.map(user => {
+  if (!user.isActive) user.isActive = !user.isActive;
+  return {
+    ...user
+  };
+});
+console.log('All the users are now active', activeUsers);
