@@ -106,7 +106,9 @@ destructuring
 const userCreditDetails = [];
 
 for (const user of usersArray) {
-  // Your Code Here ...
+  const {firstName, lastName, balance} = usersArray;
 }
+
+userCreditDetails.push({firstName, lastName, balance});
 
 console.log('userCreditDetails', userCreditDetails);
