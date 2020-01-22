@@ -70,7 +70,7 @@ for (let user of usersArray) {
   userNames.push(fullName);
 }
 
-console.log('userNames', userNames);
+// console.log('userNames', userNames);
 
 
 //  TASK 2 - for of loop
@@ -84,7 +84,7 @@ for (let user of usersArray) {
   userFirstNames.push(firstName);
 }
 
-console.log('userFirstNames', userFirstNames);
+// console.log('userFirstNames', userFirstNames);
 
 
 //  TASK 3 - for of loop
@@ -97,8 +97,8 @@ for (let user of usersArray) {
      const lastName = `${user.lastName}`;
      userLastNames.push(lastName);
 }
-console.log('userLastNames', userLastNames);
 
+// console.log('userLastNames', userLastNames);
 
 
 //  TASK 4 - ES6 destructuring , for of loop, object literal (variable name as a property name and value)
@@ -117,30 +117,35 @@ for (const user of usersArray) {
   userCreditDetails.push(obj);
 }
 
-console.log('userCreditDetails', userCreditDetails);
+// console.log('userCreditDetails', userCreditDetails);
 
 /* Task 5:
 Create a function `genderView` which will return two arrays new arrays femaleUsers and maleUsers in a object depending on the gender fill them with strings containing users’ first and last names
 */
-let maleUsers = [];
-let femaleUsers = [];
+
+const usersObj = {
+  males: [],
+  females: []
+}
 
 function genderView(arr) {
-  // const { firstName, lastName, gender} = arr;
-  for(const user of usersArray) {
-    if(user.gender === 'male') {
-      maleUsers.push(user);
-    } else {
-      femaleUsers.push(user)
+  arr.map(user => {
+    const { gender, firstName, lastName } = user;
+    if(gender === 'male'){
+      usersObj.males.push(`${firstName} ${lastName}`);
+    } else if(gender === 'female'){
+      usersObj.females.push(`${firstName} ${lastName}`);
     }
-  }
+  });
+  return usersObj;
 }
-console.log(maleUsers);
-console.log(femaleUsers);
 
-genderView(usersArray);
+console.log(genderView(usersArray));
 
 /*
 Task 6:
 Use the returned object from the previous function and print how many female and how many male users there are.
 */
+
+console.log(`Total of male users: ${usersObj.males.length}`);
+console.log(`Total of female users: ${usersObj.females.length}`);
