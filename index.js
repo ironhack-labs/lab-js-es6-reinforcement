@@ -2,14 +2,74 @@
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
 
+const usersArray = [
+  {
+    firstName: 'Kirby',
+    lastName: 'Doyle',
+    id: 'b71794e5-851e-44b5-9eec-1dd4e897e3b8',
+    isActive: false,
+    balance: '$3,570.06',
+    gender: 'male'
+  },
+  {
+    firstName: 'Tracie',
+    lastName: 'May',
+    id: '1af0e9ee-66fc-4298-b8ce-5d99bcbaac05',
+    isActive: false,
+    balance: '$1,547.73',
+    gender: 'female'
+  },
+  {
+    firstName: 'Kendra',
+    lastName: 'Hines',
+    id: '5e92af3a-b08e-4689-bdeb-3226300470e3',
+    isActive: true,
+    balance: '$12,383.08',
+    gender: 'female'
+  },
+  {
+    firstName: 'Kinney',
+    lastName: 'Howard',
+    id: '0ad2388d-83e1-4831-9cc4-e3581f8edf36',
+    isActive: false,
+    balance: '$3,207.06',
+    gender: 'male'
+  },
+  {
+    firstName: 'Howard',
+    lastName: 'Gilmore',
+    id: '0719205d-c965-44cb-a128-708cf335b26c',
+    isActive: true,
+    balance: '$21,307.75',
+    gender: 'male'
+  },
+  {
+    firstName: 'Rachelle',
+    lastName: 'Schneider',
+    id: '04012184-651b-41eb-9642-d362fedff02f',
+    isActive: true,
+    balance: '$35,121.49',
+    gender: 'female'
+  },
+  {
+    firstName: 'Lizzie',
+    lastName: 'Alford',
+    id: '598ca7ec-888e-494d-ae94-c21ace3ffa52',
+    isActive: false,
+    balance: '$4,382.94',
+    gender: 'female'
+  }
+];  
+
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames;
 };
 
-getFirstNames(usersArray);
+//console.log(getFirstNames(usersArray));
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -18,10 +78,14 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const userFullNames = []
+  for (user of arr){
+    userFullNames.push(`${user.firstName} ${user.lastName}`)
+  }
+  return userFullNames
 };
 
-getFullNames(usersArray);
+//console.log(getFullNames(usersArray));
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -32,9 +96,22 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
+  let usersCreditDetails = []
+  for (user of arr){
+    var { firstName } = user;
+    var { lastName } = user;
+    var { balance } = user;
+    const userDetails = {
+      firstName,
+      lastName,
+      balance
+    }
+    usersCreditDetails.push(userDetails)
+  }
+   return usersCreditDetails
 };
 
-getUsersCreditDetails(usersArray);
+//console.log(getUsersCreditDetails(usersArray));
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
@@ -49,10 +126,20 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
+  femaleUsers = [];
+  maleUsers = [];
   // Your code goes here ...
+  users.filter(function(el){
+    if(el.gender === 'male'){
+      maleUsers.push(`${el.firstName} ${el.lastName}`)
+    } else if (el.gender === 'female'){
+      femaleUsers.push(`${el.firstName} ${el.lastName}`)
+    }
+  })
+return { femaleUsers, maleUsers }
 };
 
-genderView(usersArray);
+//console.log(genderView(usersArray));
 // expected output:
 // {
 //    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
@@ -66,10 +153,11 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+ let amount = `Female: ${femaleUsers.length} Male: ${maleUsers.length}`
+ return amount;
 };
 
-genderCount(data);
+//console.log(genderCount(data));
 // expected output:
 // Female: 4
 // Male: 3
@@ -80,8 +168,17 @@ genderCount(data);
 
 const promo20 = users => {
   // Your code goes here ...
+  var message = '';
+  let elligible = users.filter(function(el){
+    if(parseInt(el.balance.slice(1)) > 20000){
+      message = `Dear ${el.name}, since your balance is ${el.balance}, you are eligible to apply for this awesome credit card`
+    }
+    
+  })
+  return message;
 };
-
+console.log(promo20(usersArray))
+console.log(parseInt(usersArray[0].balance.slice(1)))
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
 // Dear Rachelle, since your balance is $35,121.49, you are eligible to apply for this awesome credit card.
@@ -92,9 +189,13 @@ const promo20 = users => {
 
 const addActive = users => {
   // Your code goes here ...
+  users.forEach(function(el){
+    el.isActive = true;
+  })
+  return users
 };
 
-addActive(usersArray);
+console.log(addActive(usersArray));
 // expected output:
 // [
 //    { firstName: 'Kirby',
