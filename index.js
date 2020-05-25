@@ -164,7 +164,12 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
+  const highBalance = users.filter(function(user) {
+    let numberString = user.balance.replace(/[^0-9\.-]+/g,"")
+    return Number(numberString) >= 20000;
+   })  
+  
+  highBalance.forEach(user => console.log(`Dear ${user.firstName}, since your balance is ${user.balance}, you are eligible to apply for this awesome credit card.`))
 };
 
 // expected output:
@@ -180,6 +185,10 @@ const addActive = users => {
     user.isActive = true;
   }
   return users
+
+    /* or
+  const {isActive = true} = users
+  return users */
 };
 
 addActive(usersArray);
