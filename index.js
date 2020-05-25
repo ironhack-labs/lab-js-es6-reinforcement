@@ -173,6 +173,7 @@ promo20(usersArray)
 
 const addActive = users => {
   for(let index in users){
+    users[index].isActive = true;
     users[index] = {...users[index], isActive2: true}
   }
 };
