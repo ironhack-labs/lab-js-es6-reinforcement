@@ -5,20 +5,31 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
-  }
-};
 
+    userFirstNames.push(user.firstName);
+
+  }
+  return userFirstNames;
+};
 getFirstNames(usersArray);
+
+
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
+
+
 
 // ***************************************************************************
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const userFullName = [];
+  for (let user of arr) {
+    userFullName.push(`${user.firstName} ${user.lastName}`)
+  }
+  return userFullName
+};
 };
 
 getFullNames(usersArray);
@@ -31,7 +42,17 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  let userCreditDetails = [];
+  for (let user of arr) {
+    const {firstName, lastName, balance} = arr
+    const userDetails = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      balance: user.balance
+    };
+    userCreditDetails.push(userDetails);
+  }
+  return userCreditDetails
 };
 
 getUsersCreditDetails(usersArray);
@@ -49,7 +70,13 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  const femaleUsers = users.filter(user => user.gender === 'female')
+  const maleUsers = users.filter(user => user.gender === 'male')
+  
+  const femaleNames = femaleUsers.map(female => `${female.firstName} ${female.lastName}`);
+  const maleNames = maleUsers.map(male => `${male.firstName} ${male.lastName}`)
+  
+  return {femaleUsers: femaleNames, maleUsers: maleNames}
 };
 
 genderView(usersArray);
