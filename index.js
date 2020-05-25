@@ -147,7 +147,11 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+  const femalesCount = data.femaleUsers.length;
+  console.log(`Female: ${femalesCount}`);
+  
+  const malesCount = data.maleUsers.length;
+  console.log(`Male: ${malesCount}`)
 };
 
 genderCount(data);
@@ -172,7 +176,10 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+  for (user of users) {
+    user.isActive = true;
+  }
+  return users
 };
 
 addActive(usersArray);
