@@ -1,15 +1,76 @@
+const usersArray = [
+  {
+    firstName: 'Kirby',
+    lastName: 'Doyle',
+    id: 'b71794e5-851e-44b5-9eec-1dd4e897e3b8',
+    isActive: false,
+    balance: '$3,570.06',
+    gender: 'male'
+  },
+  {
+    firstName: 'Tracie',
+    lastName: 'May',
+    id: '1af0e9ee-66fc-4298-b8ce-5d99bcbaac05',
+    isActive: false,
+    balance: '$1,547.73',
+    gender: 'female'
+  },
+  {
+    firstName: 'Kendra',
+    lastName: 'Hines',
+    id: '5e92af3a-b08e-4689-bdeb-3226300470e3',
+    isActive: true,
+    balance: '$12,383.08',
+    gender: 'female'
+  },
+  {
+    firstName: 'Kinney',
+    lastName: 'Howard',
+    id: '0ad2388d-83e1-4831-9cc4-e3581f8edf36',
+    isActive: false,
+    balance: '$3,207.06',
+    gender: 'male'
+  },
+  {
+    firstName: 'Howard',
+    lastName: 'Gilmore',
+    id: '0719205d-c965-44cb-a128-708cf335b26c',
+    isActive: true,
+    balance: '$21,307.75',
+    gender: 'male'
+  },
+  {
+    firstName: 'Rachelle',
+    lastName: 'Schneider',
+    id: '04012184-651b-41eb-9642-d362fedff02f',
+    isActive: true,
+    balance: '$35,121.49',
+    gender: 'female'
+  },
+  {
+    firstName: 'Lizzie',
+    lastName: 'Alford',
+    id: '598ca7ec-888e-494d-ae94-c21ace3ffa52',
+    isActive: false,
+    balance: '$4,382.94',
+    gender: 'female'
+  }
+];
+
 // ***************************************************************************
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
 
 const getFirstNames = arr => {
+  // let [{firstName}] = arr;
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName);
   }
+  return userFirstNames;
 };
 
-getFirstNames(usersArray);
+console.log(getFirstNames(usersArray));
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -18,10 +79,15 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  let [{firstName}, {lastName}] = arr;
+  let usersfullNames = [];
+  for (let i of arr){
+    usersfullNames.push(`${i.firstName} ${i.lastName}`);
+  }
+  return usersfullNames;
 };
 
-getFullNames(usersArray);
+console.log(getFullNames(usersArray));
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -31,10 +97,20 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  let usersCreditDetails =[];
+  for (let user of arr){
+    let {firstName, lastName, balance} = user;
+    const userDetails = {
+      firstName,
+      lastName,
+      balance
+    };
+    usersCreditDetails.push(userDetails);
+  }
+  return usersCreditDetails;
 };
 
-getUsersCreditDetails(usersArray);
+console.log(getUsersCreditDetails(usersArray));
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
@@ -49,10 +125,20 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  let femaleUsers = [];
+  let maleUsers = [];
+  let n = users.filter(function(elem){
+    if (elem.gender == "male"){
+      maleUsers.push(`${elem.firstName} ${elem.lastName}`);
+    }
+    else {
+      femaleUsers.push(`${elem.firstName} ${elem.lastName}`);
+    }
+  })
+  return {femaleUsers, maleUsers};
 };
 
-genderView(usersArray);
+console.log(genderView(usersArray));
 // expected output:
 // {
 //    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
@@ -66,10 +152,11 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+
+  return `Females: ${femaleUsers.length} Males: ${maleUsers.length}`;
 };
 
-genderCount(data);
+console.log(genderCount(data));
 // expected output:
 // Female: 4
 // Male: 3
@@ -79,7 +166,7 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
+  const filterUsers = users.filter(u => (u.balance.replace(/[^0-9]/g,'') > 20000_00));
 };
 
 // expected output:
