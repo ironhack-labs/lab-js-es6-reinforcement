@@ -6,10 +6,14 @@ const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
     // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames
 };
 
 getFirstNames(usersArray);
+
+
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -19,9 +23,15 @@ getFirstNames(usersArray);
 
 const getFullNames = arr => {
   // Your code goes here ...
+  const userFullName = [];
+
+  for (let user of arr) {
+  userFullName.push(`${user.firstName} ${user.lastName}`)}
+  return userFullName;
 };
 
 getFullNames(usersArray);
+
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -32,6 +42,11 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
+  const getUsersCreditDetails = [];
+  for (let user of arr) {
+
+    getUsersCreditDetails.push(`${user.firstName} ${user.lastName} ${user.balance}`)}
+    return getUsersCreditDetails;
 };
 
 getUsersCreditDetails(usersArray);
