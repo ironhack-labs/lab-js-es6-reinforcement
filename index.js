@@ -30,7 +30,7 @@ const getFullNames = arr => {
   }
   return userFullName
 };
-};
+
 
 getFullNames(usersArray);
 // expected output:
