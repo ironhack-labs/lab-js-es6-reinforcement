@@ -1,5 +1,4 @@
-const usersArray = [
-  {
+const usersArray = [{
     firstName: 'Kirby',
     lastName: 'Doyle',
     id: 'b71794e5-851e-44b5-9eec-1dd4e897e3b8',

@@ -37,19 +37,37 @@ console.log(getFullNames(usersArray));
 // Iteration 3 - ES6 destructuring , for of loop, object literal
 // ***************************************************************************
 console.log("===== Iteration 3 ====== ");
+// const getUsersCreditDetails = arr => {
+//   // Your code goes here ...
+//   let usersCreditDetails = [];
+//   for (let user of arr) {
+//     let obj = {};
+//     obj.firstname = user.firstName;
+//     obj.lastName = user.lastName;
+//     obj.balance = user.balance;
+//     usersCreditDetails.push(obj);
+//   }
+//   return usersCreditDetails;
+// };
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
   let usersCreditDetails = [];
-  for (let user of arr) {
-    let obj = {};
-    obj.firstname = user.firstName;
-    obj.lastName = user.lastName;
-    obj.balance = user.balance;
-    usersCreditDetails.push(obj);
+  for ({
+      firstName,
+      lastName,
+      balance
+    } of arr) {
+    // let  {firstname,lastName,balance} = user;
+
+    usersCreditDetails.push({
+      firstName,
+      lastName,
+      balance
+    });
+
   }
   return usersCreditDetails;
 };
-
 console.log(getUsersCreditDetails(usersArray));
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
