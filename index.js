@@ -5,20 +5,28 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    const {firstName} = user;
+    userFirstNames.push(firstName)
   }
+  console.log(userFirstNames)
 };
 
 getFirstNames(usersArray);
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
+
 // ***************************************************************************
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const usersFullName = [];
+  for (let user of arr) {
+    const {firstName,lastName} = user;
+    usersFullName.push(`${firstName} ${lastName}`)
+  }
+  console.log(usersFullName)
 };
 
 getFullNames(usersArray);
@@ -31,7 +39,12 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  const usersBankDetails = [];
+  for (let user of arr) {
+    const {firstName,lastName,balance} = user;
+    usersBankDetails.push({firstName: firstName,lastName: lastName, balance:balance})
+  }
+  console.log(usersBankDetails)
 };
 
 getUsersCreditDetails(usersArray);
@@ -49,7 +62,18 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  const femaleUsers = [];
+  const maleUsers = [];
+  for (let user of users) {
+    const {firstName,lastName,gender} = user;
+    if(gender==='female') {
+      femaleUsers.push(`${firstName} ${lastName}`)
+    } else {
+      maleUsers.push(`${firstName} ${lastName}`)
+    }
+  }
+  const allUsers = {femaleUsers: femaleUsers, maleUsers: maleUsers}
+  console.log(allUsers)
 };
 
 genderView(usersArray);
@@ -66,7 +90,7 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+  console.log(data)
 };
 
 genderCount(data);
