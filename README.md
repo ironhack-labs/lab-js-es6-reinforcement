@@ -67,7 +67,7 @@ const userDetails = {
 
 ### Iteration 4: practice `.filter()` method and how to return two elements
 
-Create a function `genderView()` which should return two arrays new arrays `femaleUsers` and `maleUsers`. Depending on the gender, fill them with strings containing users' first and last names.
+Create a function `genderView()` which should return two new arrays `femaleUsers` and `maleUsers`. Depending on the gender, fill them with strings containing users' first and last names.
 
 ### Bonus - Iteration 5
 

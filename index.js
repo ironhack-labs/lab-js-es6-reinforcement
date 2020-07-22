@@ -5,7 +5,7 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
 };
 
@@ -19,6 +19,11 @@ getFirstNames(usersArray);
 
 const getFullNames = arr => {
   // Your code goes here ...
+const userfullNames = [];
+for(let user of arr) {
+  userfullNames.push(`${user.firstName} ${user.lastName}`)
+}
+return userfullNames
 };
 
 getFullNames(usersArray);
@@ -32,9 +37,19 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
+  const usersCreditDetails = [];
+  for(let {firstName, lastName, balance} of arr){
+    const userDetails = {
+      firstName,
+      lastName,
+      balance
+    }
+    usersCreditDetails.push(userDetails)
+  }
+  return usersCreditDetails
 };
 
-getUsersCreditDetails(usersArray);
+getUsersCreditDetails(usersArray)
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
@@ -48,8 +63,31 @@ getUsersCreditDetails(usersArray);
 // Iteration 4 - practice `.filter()` method and how to return two elements
 // ***************************************************************************
 
+
+// *******  PLEASE GIVE FEEDBACK ON THIS ONE *******
+
 const genderView = users => {
   // Your code goes here ...
+  const femaleUsers = [];
+  const maleUsers = [];
+
+let females = users.filter((female) => {
+	return female.gender === "female";
+});
+
+for(let {firstName, lastName} of females){
+  femaleUsers.push(`${firstName} ${lastName}`)
+}
+
+let males = users.filter((male) => {
+	return male.gender === "male";
+});
+
+for(let {firstName, lastName} of males){
+  maleUsers.push(`${firstName} ${lastName}`)
+}
+
+return `femaleUsers: ${femaleUsers}, maleUsers: ${maleUsers}`
 };
 
 genderView(usersArray);
