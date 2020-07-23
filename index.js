@@ -5,10 +5,10 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName);
   }
+  return userFirstNames;
 };
-
 getFirstNames(usersArray);
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
@@ -16,9 +16,13 @@ getFirstNames(usersArray);
 // ***************************************************************************
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
-
 const getFullNames = arr => {
-  // Your code goes here ...
+  const userFullNames = [];
+  for (let user of arr){
+    let fullName = `${user.firstName} ${user.lastName}`
+    userFullNames.push(fullName);
+  }
+  return userFullNames;
 };
 
 getFullNames(usersArray);
@@ -31,7 +35,17 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  const userCreditDetails = [];
+  for (let user of arr){
+    let {firstName = user.firstName, lastName = user.lastName, balance = user.balance} = arr;
+    let userDetails = {
+      firstName,
+      lastName,
+      balance
+    };
+    userCreditDetails.push(userDetails);
+  }
+  return userCreditDetails;
 };
 
 getUsersCreditDetails(usersArray);
@@ -47,11 +61,23 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 // Iteration 4 - practice `.filter()` method and how to return two elements
 // ***************************************************************************
-
 const genderView = users => {
-  // Your code goes here ...
+  const femaleUsers = [];
+  const maleUsers = [];
+  const femaleUsersTest = users.filter((user) => {
+    return user.gender === 'female';
+  });
+  const maleUsersTest = users.filter((user) => {
+    return user.gender === 'male';
+  });
+  for (let user of femaleUsersTest){
+    femaleUsers.push(`${user.firstName} ${user.lastName}`)
+  };
+  for (let user of maleUsersTest){
+    maleUsers.push(`${user.firstName} ${user.lastName}`)
+  };
+  return `femaleUsers: ${femaleUsers}, maleUsers: ${maleUsers}`
 };
-
 genderView(usersArray);
 // expected output:
 // {
