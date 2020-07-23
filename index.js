@@ -6,7 +6,10 @@ const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
     // Your code goes here ...
+    const {firstName} = user;
+     userFirstNames.push(firstName)
   }
+  console.log(userFirstNames)
 };
 
 getFirstNames(usersArray);
@@ -19,6 +22,12 @@ getFirstNames(usersArray);
 
 const getFullNames = arr => {
   // Your code goes here ...
+  const usersFullName = [];
+   for (let user of arr) {
+     const {firstName,lastName} = user;
+     usersFullName.push(`${firstName} ${lastName}`)
+   }
+   console.log(usersFullName)
 };
 
 getFullNames(usersArray);
@@ -32,6 +41,12 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
+  const usersBankDetails = [];
+   for (let user of arr) {
+     const {firstName,lastName,balance} = user;
+     usersBankDetails.push({firstName: firstName,lastName: lastName, balance:balance})
+   }
+   console.log(usersBankDetails)
 };
 
 getUsersCreditDetails(usersArray);
@@ -50,6 +65,10 @@ getUsersCreditDetails(usersArray);
 
 const genderView = users => {
   // Your code goes here ...
+  let femaleUsers = [], maleUsers = [];
+   users.filter(item =>  item.gender == 'female' ? femaleUsers.push(`${item.firstName} ${item.lastName}`) : maleUsers.push(`${item.firstName} ${item.lastName}`))
+
+    return {femaleUsers, maleUsers}
 };
 
 genderView(usersArray);
