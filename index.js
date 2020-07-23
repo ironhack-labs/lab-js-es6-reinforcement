@@ -92,7 +92,9 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+  const {femaleUsers, maleUsers} = data;
+  return `Female: ${femaleUsers.length}
+          Male: ${maleUsers.length}`
 };
 
 genderCount(data);
@@ -105,9 +107,13 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
+  for (let user of users){
+    if (parseInt(user.balance.substring(1).replace(',', '')) >= 20000){
+      return `Dear ${user.firstName}, since your balance is ${user.balance}, you are eligible to apply for this awesome credit card.`;
+  };
 };
-
+};
+promo20(usersArray);
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
 // Dear Rachelle, since your balance is $35,121.49, you are eligible to apply for this awesome credit card.
@@ -117,7 +123,10 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+  users.forEach((user) => {
+    user.isActive = true;
+  })
+  return users;
 };
 
 addActive(usersArray);
