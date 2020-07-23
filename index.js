@@ -6,10 +6,16 @@ const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
     // Your code goes here ...
+    //destructuring the element firstName from usersArray, and storage it on variable user
+    const {firstName} = user
+    // filling userFirstNames array with the firstName of usersArray
+    userFirstNames.push(firstName);
+    // Your code goes here ..
   }
+  return userFirstNames
 };
-
 getFirstNames(usersArray);
+
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -19,6 +25,22 @@ getFirstNames(usersArray);
 
 const getFullNames = arr => {
   // Your code goes here ...
+  const getFullNames = arr => {
+    // Your code goes here ...
+    //1. This function will return the userFullNames, so lets define this variable as an array
+   const userFullNames= [];
+   //2.Filling this array
+   for (let user of arr){
+     let {firstName,lastName} = user;
+     userFullNames.push(`${firstName} ${lastName}`)
+     //console.log (`${firstName} ${lastName}`)
+   }
+ return userFullNames
+ };
+ 
+ getFullNames(usersArray);
+
+
 };
 
 getFullNames(usersArray);
@@ -32,6 +54,14 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
+  const UsersCreditDetails=[];
+  
+  for (let user of arr) {
+    let {firstName,lastName,balance} =user
+    UsersCreditDetails.push (`{firstName:  ${firstName},lastName:  ${lastName}, balance: ${balance}`)
+  }
+  
+  return UsersCreditDetails;
 };
 
 getUsersCreditDetails(usersArray);
