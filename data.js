@@ -83,7 +83,7 @@ const getFullNames = arr => {
   }
 
   console.log(userFullName);
-  return userFullNames;
+  return userFullName;
 };
 
 getFullNames(usersArray)
