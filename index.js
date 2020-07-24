@@ -71,29 +71,18 @@ const getUsersCreditDetails = arr => {
 
 const genderView = users => {
   // Your code goes here ...
-  const femaleUsers = [];
-  const maleUsers = [];
-
 let females = users.filter((female) => {
 	return female.gender === "female";
 });
-
-for(let {firstName, lastName} of females){
-  femaleUsers.push(`${firstName} ${lastName}`)
-}
 
 let males = users.filter((male) => {
 	return male.gender === "male";
 });
 
-for(let {firstName, lastName} of males){
-  maleUsers.push(`${firstName} ${lastName}`)
-}
-
-return {femaleUsers, maleUsers}
+return {femaleUsers: getFullNames(males), maleUsers: getFullNames(females)}
 };
 
-// genderView(usersArray)
+genderView(usersArray)
 
 
 // expected output:
@@ -161,12 +150,13 @@ for (const {firstName, balance} of qualify) {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
-for (let i in users){
-  users[i].isActive = true
-}
-return users
-};
+  return users.map(user => {
+  return {
+  ...user, //here you are getting the whole user object copied
+  isActive: true
+  }
+  })
+  }
 
 // addActive(usersArray);
 
