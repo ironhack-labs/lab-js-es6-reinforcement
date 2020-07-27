@@ -6,7 +6,9 @@ const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
     // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames;
 };
 
 getFirstNames(usersArray);
@@ -17,11 +19,19 @@ getFirstNames(usersArray);
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
-const getFullNames = arr => {
+const getusers = arr => {
   // Your code goes here ...
+  const userusers = [];
+  for (let user of arr) {
+    let firstName = user.firstName;
+    let lastName = user.lastName;
+    let user = firstName + ' ' + lastName;
+    userusers.push(user);
+  }
+  return userusers;
 };
 
-getFullNames(usersArray);
+getusers(usersArray);
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -32,9 +42,21 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
+  let usersCreditDetails = [];
+  for (let user of arr) {
+    let {firstName, lastName,  balance} = user;
+    const userDetails = {
+      firstName,
+      lastName,
+      balance
+    }
+    usersCreditDetails.push(userDetails)
+  }
+  return usersCreditDetails;
 };
 
-getUsersCreditDetails(usersArray);
+console.log(getUsersCreditDetails(usersArray));
+
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
@@ -50,26 +72,60 @@ getUsersCreditDetails(usersArray);
 
 const genderView = users => {
   // Your code goes here ...
+  
+  let femaleUser = users
+    .filter(function(user) {
+      return user.gender == 'female';
+    })
+    .map(function(user) {
+      return user.firstName + ' ' + user.lastName;
+    })
+  let maleUser = users
+    .filter(function(user) {
+      return user.gender == 'male';
+    })
+    .map(function(user) {
+      return user.firstName + ' ' + user.lastName;
+    })
+
+  let obj = {maleUser, femaleUser}
+  return obj;
+  
 };
 
-genderView(usersArray);
-// expected output:
-// {
-//    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
-//    maleUsers: [ 'Kirby Doyle', 'Kinney Howard', 'Howard Gilmore' ]
-// }
+console.log(genderView(usersArray));
+// // expected output:
+// // {
+// //    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
+// //    maleUsers: [ 'Kirby Doyle', 'Kinney Howard', 'Howard Gilmore' ]
+// // }
 
-// ***************************************************************************
-// Bonus - Iteration 5
-// ***************************************************************************
+// // ***************************************************************************
+// // Bonus - Iteration 5
+// // ***************************************************************************
 
 const data = genderView(usersArray);
 
 const genderCount = data => {
   // Your code goes here ...
+  let malesCount = 0;
+  let femalesCount = 0;
+  
+  let males = data.maleUser;
+  for (let male of males) {
+    malesCount += 1;
+  }
+  let females = data.femaleUser;
+  for (let female of females) {
+    femalesCount += 1;
+  }
+  
+  console.log(`Male: ${malesCount}`)
+  console.log(`Female: ${femalesCount}`)
 };
 
 genderCount(data);
+
 // expected output:
 // Female: 4
 // Male: 3
@@ -80,7 +136,19 @@ genderCount(data);
 
 const promo20 = users => {
   // Your code goes here ...
+  
+  let balanceArr = users.filter(function(user) {
+    let balances = user.balance
+    let newBalance = balances.replace('$', '')
+    let newBalanceTwo = newBalance.replace(',', '')
+    return newBalanceTwo > 20000;
+  })
+  let [{firstName: name, balance: sum}, {firstName: secondName, balance: sumTwo}] = balanceArr;
+  console.log(`Dear ${name}, since your balance is ${sum}, you are eligible to apply for this awesome credit card.`)
+  console.log(`Dear ${secondName}, since your balance is ${sumTwo}, you are eligible to apply for this awesome credit card.`)
 };
+
+promo20(usersArray);
 
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
@@ -92,6 +160,11 @@ const promo20 = users => {
 
 const addActive = users => {
   // Your code goes here ...
+  for (let user of users) {
+    let userNames = {...user};
+    userNames.isActive = true;
+  }
+  
 };
 
 addActive(usersArray);
