@@ -5,11 +5,12 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName);
   }
 };
 
 getFirstNames(usersArray);
+
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -18,7 +19,11 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const userFullNames = [];
+  for (let user of arr) {
+    userFullNames.push(`${user.firstName} ${user.lastName}`);
+  }
+  return userFullNames;
 };
 
 getFullNames(usersArray);
@@ -31,7 +36,16 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  const usersCreditDetails = [];
+  for (let user of arr) {
+    let {firstName, lastName, balance} = user;
+    const userDetails = {
+      firstName,
+      lastName,
+      balance
+    };
+    usersCreditDetails.push(userDetails);
+  }
 };
 
 getUsersCreditDetails(usersArray);
@@ -49,7 +63,13 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  let femaleUsers = users.filter(function(user){
+    return user.gender === 'female';
+  });
+  let maleUsers = users.filter(function(user){
+    return user.gender === 'male';
+  });
+  return {femaleUsers: getFullNames(femaleUsers), maleUsers: getFullNames(maleUsers)}
 };
 
 genderView(usersArray);
@@ -66,8 +86,8 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
-};
+  return `Female: ${genderView(data).femaleUsers.length}, Male: ${genderView(data).maleUsers.length}`
+}
 
 genderCount(data);
 // expected output:
@@ -79,7 +99,13 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
+  let messageArr = [];
+  for (let user of users) {
+    if (Number(user.balance.slice(1).split('.')[0].replace(',', '')) > 20000) {
+      messageArr.push(`Dear ${user.firstName}, since your balance is ${user.balance}, you are eligible to apply for this awesome credit card.`)
+    }
+  }
+  return messageArr;
 };
 
 // expected output:
@@ -91,7 +117,12 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+  let newArr = [];
+  for (let user of users) {
+    let newObj = {...user, isActive: true}
+    newArr.push(newObj);
+  }
+  return newArr;
 };
 
 addActive(usersArray);
