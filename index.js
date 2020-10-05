@@ -5,8 +5,9 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName);
   }
+  console.log(userFirstNames);
 };
 
 getFirstNames(usersArray);
@@ -18,7 +19,11 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const fullNames = [];
+  for (let user of arr){
+    fullNames.push(`${user.firstName} ${user.lastName}`);
+  }
+  console.log(fullNames);
 };
 
 getFullNames(usersArray);
@@ -31,7 +36,19 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  const usersCreditDetails = [];
+  for (let user of arr){
+    let {firstName, lastName, balance} = user;
+    const userDetails = {
+      firstName,
+      lastName,
+      balance
+    };
+
+    usersCreditDetails.push(userDetails);
+  }
+
+  console.log(usersCreditDetails);
 };
 
 getUsersCreditDetails(usersArray);
