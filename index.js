@@ -68,19 +68,20 @@ getUsersCreditDetails(usersArray);
 const genderView = users => {
 
   let maleUsers = users.filter((user) => {
-    return user.gender == "male"
+    return user.gender == "male";
   }).map((user) => {
-    return `${user.firstName} ${user.lastName}`
-  })
-  let femaleUsers = users.filter((user) => {
-    return user.gender == "female"
-  }).map((user) => {
-    return `${user.firstName} ${user.lastName}`
+    return `${user.firstName} ${user.lastName}`;
   });
 
-  let genderedUsers = {femaleUsers, maleUsers}
-  console.log(genderedUsers)
-   return genderedUsers// Your code goes here ...
+  let femaleUsers = users.filter((user) => {
+    return user.gender == "female";
+  }).map((user) => {
+    return `${user.firstName} ${user.lastName}`;
+  });
+
+  let genderedUsers = { femaleUsers, maleUsers };
+  console.log(genderedUsers);
+  return genderedUsers;
 };
 
 genderView(usersArray);
@@ -97,8 +98,8 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-   console.log( `female: ${data.femaleUsers.length}
-   male: ${data.maleUsers.length}`)// Your code goes here ...
+  console.log(`female: ${data.femaleUsers.length}
+   male: ${data.maleUsers.length}`);
 };
 
 genderCount(data);
@@ -111,21 +112,18 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
-  for (let user of users){
-    
-    let userBalance =user.balance.slice(1)
-    userBalance = userBalance.replace(',', '')
-    console.log(Number(userBalance))
+  for (let user of users) {
 
-    //userBalance = Math.floor(Number(userBalance))
-    console.log(userBalance)
-    if (userBalance >=20000) {
+    let userBalance = user.balance.slice(1);
+    userBalance = userBalance.replace(',', '');
+
+    if (userBalance >= 20000) {
       console.log(`Dear ${user.firstName}, since your balance is ${user.balance}, 
-      you are eligible to apply for this awesome credit card.`)
+      you are eligible to apply for this awesome credit card.`);
     }
   }
-    // Your code goes here ...
 };
+
 promo20(usersArray);
 
 // expected output:
@@ -137,7 +135,11 @@ promo20(usersArray);
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+  for (let user of users) {
+    user.isActive = true;
+  }
+
+  console.log(users);
 };
 
 addActive(usersArray);
