@@ -5,8 +5,10 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(`${user.firstName}`)
   }
+  console.log(userFirstNames)
+  return userFirstNames
 };
 
 getFirstNames(usersArray);
@@ -18,7 +20,12 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  let usersArray = []
+  for (let user of arr){
+    usersArray.push(`${user.firstName} ${user.lastName}`)
+  }
+  console.log(usersArray)
+  return usersArray
 };
 
 getFullNames(usersArray);
@@ -31,7 +38,13 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  let usersCreditDetails = [];
+  for(let user of arr){
+    let {firstName, lastName, balance} = user
+    usersCreditDetails.push({firstName, lastName, balance})
+  }
+  console.log(usersCreditDetails)
+  return usersCreditDetails
 };
 
 getUsersCreditDetails(usersArray);
@@ -49,7 +62,29 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  let women = users.filter((elem)=>{
+    return elem.gender === 'female'
+  })
+  let men = users.filter((elem)=>{
+    return elem.gender === 'male'
+  })
+  let femaleUsers = []
+  let maleUsers = []
+  for (let user of women){
+    let {firstName, lastName} = user
+    femaleUsers.push(`${user.firstName} ${user.lastName}`)
+  }
+  for (let user of men){
+    let {firstName, lastName} = user
+    maleUsers.push(`${user.firstName} ${user.lastName}`)
+  }
+  let myObj = {
+    femaleUsers : femaleUsers,
+    maleUsers : maleUsers
+  }
+  console.log(myObj)
+  return myObj
+
 };
 
 genderView(usersArray);
