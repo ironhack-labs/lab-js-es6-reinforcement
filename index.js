@@ -5,9 +5,11 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames
 };
+// console.log(getFirstNames(usersArray))
 
 getFirstNames(usersArray);
 // expected output:
@@ -18,10 +20,13 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+    const userFullNames = [];
+    for (let user of arr) {
+      userFullNames.push(`${user.firstName} ${user.lastName}`)
+    }
+    return userFullNames
 };
-
-getFullNames(usersArray);
+// console.log(getFullNames(usersArray))
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -31,10 +36,18 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  const userCreditDetails = [];
+  for (let user of arr) {
+    let {balance, firstName, lastName} = user
+    userCreditDetails.push({
+      firstName,
+      lastName,
+      balance
+    })
+  }
+  return userCreditDetails
 };
-
-getUsersCreditDetails(usersArray);
+// console.log(getUsersCreditDetails(usersArray))
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
@@ -49,10 +62,21 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+    let genderObj = {
+      femaleUsers: [],
+      maleUsers: []
+    }
+    let newArr = users.filter((i)=>{
+        if (i.gender==='male') {
+          genderObj.maleUsers.push(`${i.firstName} ${i.lastName}`)
+        } else {
+          genderObj.femaleUsers.push(`${i.firstName} ${i.lastName}`)
+        }
+    })
+    return genderObj
 };
 
-genderView(usersArray);
+// console.log(genderView(usersArray))
 // expected output:
 // {
 //    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
@@ -66,10 +90,15 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+    let {femaleUsers, maleUsers} = data
+    let countObj = {
+      Female: femaleUsers.length,
+      Male: maleUsers.length
+    }
+    return countObj
 };
 
-genderCount(data);
+// console.log(genderCount(data))
 // expected output:
 // Female: 4
 // Male: 3
@@ -79,9 +108,15 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
+  for(let i = 0; i < users.length; i++){
+    let balance = users[i].balance.slice(1, users[i].balance.length).split(',')
+    if (balance[0] >= 20){
+      console.log(`Dear ${users[i].firstName}, since your balance is ${users[i].balance}, you are eligible to apply for this awesome credit card`)
+    }
+  }
 };
 
+// promo20(usersArray)
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
 // Dear Rachelle, since your balance is $35,121.49, you are eligible to apply for this awesome credit card.
@@ -91,8 +126,19 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+  for(let user of users) {
+    for(let user of users) {
+      let active = {...user, isActive: true}
+      console.log(active)
+    }
+  }
 };
+
+// let active = {
+//   isActive: true
+// }
+// let activeAll = {1 + ...active}
+
 
 addActive(usersArray);
 // expected output:
