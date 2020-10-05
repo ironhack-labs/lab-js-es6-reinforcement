@@ -20,7 +20,7 @@ getFirstNames(usersArray);
 
 const getFullNames = arr => {
   const fullNames = [];
-  for (let user of arr){
+  for (let user of arr) {
     fullNames.push(`${user.firstName} ${user.lastName}`);
   }
   console.log(fullNames);
@@ -37,8 +37,8 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   const usersCreditDetails = [];
-  for (let user of arr){
-    let {firstName, lastName, balance} = user;
+  for (let user of arr) {
+    let { firstName, lastName, balance } = user;
     const userDetails = {
       firstName,
       lastName,
@@ -66,7 +66,21 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+
+  let maleUsers = users.filter((user) => {
+    return user.gender == "male"
+  }).map((user) => {
+    return `${user.firstName} ${user.lastName}`
+  })
+  let femaleUsers = users.filter((user) => {
+    return user.gender == "female"
+  }).map((user) => {
+    return `${user.firstName} ${user.lastName}`
+  });
+
+  let genderedUsers = {femaleUsers, maleUsers}
+  console.log(genderedUsers)
+   return genderedUsers// Your code goes here ...
 };
 
 genderView(usersArray);
@@ -83,7 +97,8 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+   console.log( `female: ${data.femaleUsers.length}
+   male: ${data.maleUsers.length}`)// Your code goes here ...
 };
 
 genderCount(data);
@@ -96,8 +111,22 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
+  for (let user of users){
+    
+    let userBalance =user.balance.slice(1)
+    userBalance = userBalance.replace(',', '')
+    console.log(Number(userBalance))
+
+    //userBalance = Math.floor(Number(userBalance))
+    console.log(userBalance)
+    if (userBalance >=20000) {
+      console.log(`Dear ${user.firstName}, since your balance is ${user.balance}, 
+      you are eligible to apply for this awesome credit card.`)
+    }
+  }
+    // Your code goes here ...
 };
+promo20(usersArray);
 
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
