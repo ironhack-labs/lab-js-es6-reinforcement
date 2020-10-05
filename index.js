@@ -116,20 +116,16 @@ console.log(promo20(usersArray))
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+  let newArr = [...usersArray]
+  for (let i=0; i<newArr.length; i++){
+    if(newArr[i].isActive === false){
+      newArr[i].isActive = true;
+    }
+  }
+  return newArr
 };
 
-addActive(usersArray);
-// expected output:
-// [
-//    { firstName: 'Kirby',
-//      lastName: 'Doyle',
-//      id: 'b71794e5-851e-44b5-9eec-1dd4e897e3b8',
-//      isActive: true,
-//      balance: '$3,570.06',
-//      gender: 'male'
-//    },
-//    {
-//      // ...
-//    }
-// ]
+console.log(addActive(usersArray));
+
+
+
