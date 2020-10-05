@@ -5,86 +5,111 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames
 };
 
-getFirstNames(usersArray);
-// expected output:
-// [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
+console.log(getFirstNames(usersArray));
 
 // ***************************************************************************
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const userFullNames = [];
+  for (let user of arr) {
+    userFullNames.push(`${user.firstName} ${user.lastName}`)
+  }
+  return userFullNames
 };
 
-getFullNames(usersArray);
-// expected output:
-// [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
-//   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
+console.log(getFullNames(usersArray));
+
 
 // ***************************************************************************
 // Iteration 3 - ES6 destructuring , for of loop, object literal
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  const usersCreditDetails = [];
+for (let user of arr){
+  let {firstName} = arr;
+  let {lastName} = arr;
+  let {balance} = arr;
+  const userDetails = {
+    firstName: user.firstName,
+    lastName: user.lastName,
+    balance: user.balance
+  };
+
+  usersCreditDetails.push(userDetails)
+
+}
+return usersCreditDetails
 };
 
-getUsersCreditDetails(usersArray);
-// expected output:
-// [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
-// { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
-// { firstName: 'Kendra', lastName: 'Hines', balance: '$12,383.08' },
-// { firstName: 'Kinney', lastName: 'Howard', balance: '$3,207.06' },
-// { firstName: 'Howard', lastName: 'Gilmore', balance: '$21,307.75' },
-// { firstName: 'Rachelle', lastName: 'Schneider', balance: '$35,121.49' },
-// { firstName: 'Lizzie', lastName: 'Alford', balance: '$4,382.94' } ]
+console.log(getUsersCreditDetails(usersArray));
+
 
 // ***************************************************************************
 // Iteration 4 - practice `.filter()` method and how to return two elements
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  const femaleUsers = [];
+  const maleUsers = [];
+  let genderCheck = usersArray.filter((user) => {
+     if(user.gender === 'female'){
+       femaleUsers.push(`${user.firstName} ${user.lastName}`)
+     } else{
+       maleUsers.push(`${user.firstName} ${user.lastName}`)
+     }
+  })
+  return {femaleUsers, maleUsers}
 };
 
-genderView(usersArray);
-// expected output:
-// {
-//    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
-//    maleUsers: [ 'Kirby Doyle', 'Kinney Howard', 'Howard Gilmore' ]
-// }
+console.log(genderView(usersArray));
+
+
 
 // ***************************************************************************
 // Bonus - Iteration 5
 // ***************************************************************************
 
 const data = genderView(usersArray);
-
+ 
 const genderCount = data => {
-  // Your code goes here ...
+
+  let countFemale = data.femaleUsers.length;
+  let countMale = data.maleUsers.length;
+  return `Female:${countFemale} Male:${countMale}`
+
 };
 
-genderCount(data);
-// expected output:
-// Female: 4
-// Male: 3
+console.log(genderCount(data));
 
 // ***************************************************************************
 // Bonus - Iteration 6
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
+ 
+    let richOnes = users.filter((user) => {
+    let balanceMoney = user.balance.substr(1).replace(",", "")
+    let onlyMoney = Number(balanceMoney)
+    if (onlyMoney > 20000){
+      return true
+    }
+  }).forEach((rich)=>{
+    console.log( `Dear ${rich.firstName}, since your balance is ${rich.balance}, you are eligible to apply for this awesome credit card.`)
+  })
+  return richOnes
 };
 
-// expected output:
-// Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
-// Dear Rachelle, since your balance is $35,121.49, you are eligible to apply for this awesome credit card.
+
+console.log(promo20(usersArray))
+
 
 // ***************************************************************************
 // Bonus - Iteration 7
