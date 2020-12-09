@@ -5,6 +5,7 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
+    userFirstNames.push(`${user.firstName} ${user.lastName}`);
     // Your code goes here ...
   }
 };
