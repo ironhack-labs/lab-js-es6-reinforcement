@@ -5,20 +5,37 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+   userFirstNames.push(user.firstName)
   }
+  return userFirstNames
 };
 
 getFirstNames(usersArray);
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
+///ALTERNATIVE
+// const getFirstNames = arr => {
+//   const userFirstNames = [];
+//   for (let {firstName} of usersArray) {
+//     // Your code goes here ...
+//     userFirstNames.push(firstName)
+//   }
+// return userFirstNames
+// };
+
+
 // ***************************************************************************
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+   const userFullName = [];
+   for (let user of arr) {
+     const fullName = `${user.firstName} ${user.lastName}`;
+     userFullName.push(fullName);
+   }
+   return userFullName;
 };
 
 getFullNames(usersArray);
@@ -31,7 +48,13 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  let userCreditDetails = [];
+  for (let user of arr) {
+    const { firstName, lastName, balance } = user;
+    const userDetails = { firstName, lastName, balance };
+    userCreditDetails.push(userDetails);
+  }
+  return userCreditDetails;
 };
 
 getUsersCreditDetails(usersArray);
@@ -49,7 +72,15 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+const femaleUsers = [...users]
+  .filter((user) => user.gender === "female")
+  .map((elem) => `${elem.firstName} ${elem.lastName}`);
+
+const maleUsers = [...users]
+  .filter((user) => user.gender === "male")
+  .map((elem) => `${elem.firstName} ${elem.lastName}`);
+
+return { femaleUsers, maleUsers };
 };
 
 genderView(usersArray);
@@ -66,7 +97,8 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+return `Female: ${data.femaleUsers.length}
+Male: ${data.maleUsers.length}`;
 };
 
 genderCount(data);
@@ -80,6 +112,11 @@ genderCount(data);
 
 const promo20 = users => {
   // Your code goes here ...
+  const eligible = [...users]
+    .map(user => user.balance.substring(1))
+    .map(string => string.replace(",", ""))
+    .map(str => parseFloat(str))
+    .filter(sum => sum > 20000);
 };
 
 // expected output:
@@ -91,7 +128,8 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+ [...users].map(user => user.isActive = "true");
+ return users;
 };
 
 addActive(usersArray);
