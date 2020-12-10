@@ -1,3 +1,4 @@
+const cl = (...p)=>console.log(...p)
 
 
 const usersArray = [
@@ -58,24 +59,9 @@ const usersArray = [
     gender: 'female'
   }
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ***************************************************************************
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
-
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
@@ -83,9 +69,9 @@ const getFirstNames = arr => {
 
   }
   return userFirstNames
-};
+};  
 
-//console.log(getFirstNames(usersArray));
+cl(getFirstNames(usersArray));
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -94,16 +80,16 @@ const getFirstNames = arr => {
 // ***************************************************************************
 
 const getFullNames = arr => {
- 
-const userFullNames =[]
- for(user of arr){
-  userFullNames.push(`${user.firstName} ${user.lastName}`)
- }
-return userFullNames
- 
+  const userFullNames =[]
+   for(user of arr){
+    userFullNames.push(`${user.firstName} ${user.lastName}`)
+   }
+  return userFullNames
+   
 };
 
-//console.log(getFullNames(usersArray));
+cl(getFullNames(usersArray));
+
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -130,7 +116,8 @@ const getUsersCreditDetails = arr => {
   
 };
 
-console.log(getUsersCreditDetails(usersArray));
+cl(getUsersCreditDetails(usersArray));
+
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
@@ -145,10 +132,28 @@ console.log(getUsersCreditDetails(usersArray));
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+ 
+  const femaleUsers = users.filter(f => {
+    const {gender} = f
+    return  gender === 'female'
+  }).map(fL => {
+    const {firstName, lastName} = fL
+    return `${firstName}, ${lastName}`
+  })
+
+  const maleUsers = users.filter(m => {
+    const {gender} = m
+    return  gender === 'male'
+  }).map(fL => {
+    const {firstName, lastName} = fL
+    return `${firstName}, ${lastName}`
+  })
+
+return {femaleUsers, maleUsers}
 };
 
-genderView(usersArray);
+cl(genderView(usersArray));
+
 // expected output:
 // {
 //    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
@@ -162,10 +167,12 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+ const {maleUsers, femaleUsers} = data
+
+  return ` Female: ${femaleUsers.length} Male: ${maleUsers.length}  `
 };
 
-genderCount(data);
+cl(genderCount(data));
 // expected output:
 // Female: 4
 // Male: 3
@@ -203,9 +210,3 @@ addActive(usersArray);
 //    {
 //      // ...
 //    }
-// ]
-
-
-
-
-
