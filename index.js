@@ -122,6 +122,14 @@ genderCount(data);
 // ***************************************************************************
 
 const promo20 = users => {
+  return users.filter(user => {
+    const {balance} = user;
+    const cleaned = +balance.subString(1).replace(`,`,``);
+
+    if(cleaned > 20000) return user
+  }).map(user => {
+    return `Dear ${user.firstName} , since your balance is ${user.balance}`;
+  })
   // Your code goes here ...
 };
 
@@ -134,6 +142,9 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
+  users.map( {...user, isActive: true});
+
+  return users;
   // Your code goes here ...
 };
 
