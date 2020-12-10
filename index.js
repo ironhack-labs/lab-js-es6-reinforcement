@@ -69,17 +69,30 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  const genderView = users => {
-    return {maleUsers : users.filter(user => user.gender === `male`), femaleUsers: users.filter(user => user.gender === `female`)};
-    
-    // Your code goes here ...
+  const maleUsers = [];
+  const femaleUsers = [];
+
+  [...users].filter ( user => {
+    const {firstName, lastName} = user;
+    if(user.gender === `male`){
+      maleUsers.push(`${firstName} ${lastName} `);
+    }else {
+      femaleUsers.push(`${firstName} ${lastName}`);
+    }
+
+
+  });
+
+  return {
+    maleUsers, femaleUsers
+  }
   };
   
-  genderView(usersArray);
+
 
   
   // Your code goes here ...
-};
+
 
 genderView(usersArray);
 // expected output:
@@ -95,6 +108,7 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
+  return `male: ${data.maleUsers.length} ; female: ${data.femaleUsers.length}`;
   // Your code goes here ...
 };
 
