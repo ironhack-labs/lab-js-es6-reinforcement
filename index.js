@@ -73,12 +73,12 @@ getUsersCreditDetails(usersArray);
 
 const genderView = users => {
 const femaleUsers = [...users]
-  .filter((user) => user.gender === "female")
-  .map((elem) => `${elem.firstName} ${elem.lastName}`);
+  .filter(user => user.gender === "female")
+  .map(elem => `${elem.firstName} ${elem.lastName}`);
 
 const maleUsers = [...users]
-  .filter((user) => user.gender === "male")
-  .map((elem) => `${elem.firstName} ${elem.lastName}`);
+  .filter(user=> user.gender === "male")
+  .map(elem=> `${elem.firstName} ${elem.lastName}`);
 
 return { femaleUsers, maleUsers };
 };
@@ -110,15 +110,25 @@ genderCount(data);
 // Bonus - Iteration 6
 // ***************************************************************************
 
-const promo20 = users => {
-  // Your code goes here ...
-  const eligible = [...users]
-    .map(user => user.balance.substring(1))
-    .map(string => string.replace(",", ""))
-    .map(str => parseFloat(str))
-    .filter(sum => sum > 20000);
+
+const promo20 = (users) => {
+  return users
+    .filter((user) => {
+      const { balance } = user;
+      const cleaned = +balance.substring(1).replace(",", "");
+      // parseInt or Number() ===> turns string to a number type
+
+      if (cleaned > 20000) return user;
+    })
+    .map((user) => {
+      const { firstName, balance } = user;
+      console.log(
+        `Dear ${firstName} since your balance is ${balance}, you are eligible to apply for this awesome credit card.`
+      );
+    });
 };
 
+promo20(usersArray)
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
 // Dear Rachelle, since your balance is $35,121.49, you are eligible to apply for this awesome credit card.
