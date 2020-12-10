@@ -69,6 +69,15 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
+  const genderView = users => {
+    return {maleUsers : users.filter(user => user.gender === `male`), femaleUsers: users.filter(user => user.gender === `female`)};
+    
+    // Your code goes here ...
+  };
+  
+  genderView(usersArray);
+
+  
   // Your code goes here ...
 };
 
