@@ -142,9 +142,9 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  users.map( {...user, isActive: true});
+  return users.map({...user, isActive: true});
 
-  return users;
+
   // Your code goes here ...
 };
 
