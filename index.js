@@ -71,7 +71,7 @@ const getFirstNames = arr => {
   return userFirstNames
 };  
 
-cl(getFirstNames(usersArray));
+//cl(getFirstNames(usersArray));
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -88,7 +88,7 @@ const getFullNames = arr => {
    
 };
 
-cl(getFullNames(usersArray));
+//cl(getFullNames(usersArray));
 
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
@@ -116,7 +116,7 @@ const getUsersCreditDetails = arr => {
   
 };
 
-cl(getUsersCreditDetails(usersArray));
+//cl(getUsersCreditDetails(usersArray));
 
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
@@ -152,7 +152,7 @@ const genderView = users => {
 return {femaleUsers, maleUsers}
 };
 
-cl(genderView(usersArray));
+//cl(genderView(usersArray));
 
 // expected output:
 // {
@@ -172,7 +172,7 @@ const genderCount = data => {
   return ` Female: ${femaleUsers.length} Male: ${maleUsers.length}  `
 };
 
-cl(genderCount(data));
+//cl(genderCount(data));
 // expected output:
 // Female: 4
 // Male: 3
@@ -182,8 +182,20 @@ cl(genderCount(data));
 // ***************************************************************************
 
 const promo20 = users => {
-  // Your code goes here ...
-};
+
+  return users.filter((user)=>{
+    const {firstName, balance} = user
+    const balanceFullNum = +balance.substr(1).split(/^\.|\,/).join('')
+  // make absolute sure number above $1000
+
+  //if(parseInt(balance.substr(1)) > 20) // assuming all balances are above $1000
+    if(balanceFullNum > 20000)
+      console.log(`Dear ${firstName}, since your balance is ${balance}, you are eligible to apply for this awesome credit card.`)
+  })
+
+}
+
+cl(promo20(usersArray))
 
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
@@ -194,10 +206,20 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
-};
-
-addActive(usersArray);
+  // users.map( user => user.isActive = true); return users // map mutates object reference
+  
+  // keep original object ref
+  return users.map( user => {
+    return {...user, isActive: true}
+  })
+}
+cl('---------addActive()----------')
+cl(addActive(usersArray));
+cl('-------end ad Active-----------')
+cl('-~~~~~~~~~~~~~~~~~')
+cl('---------ORIGINAL OBJECT----------')
+cl(usersArray)
+cl('-------end ORIGINAL OBJECT-----------')
 // expected output:
 // [
 //    { firstName: 'Kirby',
