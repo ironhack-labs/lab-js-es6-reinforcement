@@ -2,14 +2,18 @@
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
 
-const getFirstNames = arr => {
+const getFirstNames = (array) => {
   const userFirstNames = [];
-  for (let user of arr) {
-    // Your code goes here ...
+  for (let user of array) {
+    // const firstName = user.firstName;  (the method under is destructing assigment both are the same)
+    const {firstName} = user;
+    userFirstNames.push(firstName);
   }
+  return userFirstNames;
 };
 
-getFirstNames(usersArray);
+//getFirstNames(usersArray);
+
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
