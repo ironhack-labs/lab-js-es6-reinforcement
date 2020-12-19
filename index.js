@@ -21,8 +21,15 @@ const getFirstNames = (array) => {
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
-const getFullNames = arr => {
-  // Your code goes here ...
+const getFullNames = (array) => {
+  const userFullNames = [];
+  for (let user of array) {
+    const {firstName, lastName} = user;
+    userFullNames.push(firstName, lastName);
+
+  }
+
+ return userFullNames
 };
 
 getFullNames(usersArray);
@@ -34,11 +41,36 @@ getFullNames(usersArray);
 // Iteration 3 - ES6 destructuring , for of loop, object literal
 // ***************************************************************************
 
-const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+const getUsersCreditDetails = (array) => {
+  const usersCreditDetails = [];
+
+  for (let user of array) {
+    // const firstName = user.firstName;
+    // const lastName = user.lastName;
+    // const balance = user.balance;
+
+    const { firstName, lastName, balance } = user;
+
+    // const userDetail = {
+    //   firstName: firstName,
+    //   lastName: lastName,
+    //   balance: balance
+    // };
+
+    const userDetail = {
+      firstName,
+      lastName,
+      balance
+    };
+
+    usersCreditDetails.push(userDetail);
+  }
+
+  return usersCreditDetails;
 };
 
-getUsersCreditDetails(usersArray);
+// getUsersCreditDetails(usersArray);
+
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
