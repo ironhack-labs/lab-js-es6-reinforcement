@@ -32,7 +32,8 @@ const getFullNames = (array) => {
  return userFullNames
 };
 
-getFullNames(usersArray);
+//getFullNames(usersArray);
+
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -48,6 +49,7 @@ const getUsersCreditDetails = (array) => {
     // const firstName = user.firstName;
     // const lastName = user.lastName;
     // const balance = user.balance;
+    // thisn 3 variables are the same than the one at the bottom 
 
     const { firstName, lastName, balance } = user;
 
@@ -85,7 +87,16 @@ const getUsersCreditDetails = (array) => {
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  const maleUser = [];
+  const femaleUsers = [];
+  users.filter( user => {
+    const { firstName, lastName, gender} = user;
+    if (gender === 'male') maleUser.push(`${firstName} ${lastName}`)
+    else femaleUsers.push(`${firstName} ${lastName}`)
+  })
+  return {
+    maleUser, femaleUsers
+  }
 };
 
 genderView(usersArray);
