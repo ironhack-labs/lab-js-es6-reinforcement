@@ -3,7 +3,6 @@ const usersArray = [
     firstName: 'Kirby',
     lastName: 'Doyle',
     id: 'b71794e5-851e-44b5-9eec-1dd4e897e3b8',
-    isActive: false,
     balance: '$3,570.06',
     gender: 'male'
   },
@@ -11,7 +10,6 @@ const usersArray = [
     firstName: 'Tracie',
     lastName: 'May',
     id: '1af0e9ee-66fc-4298-b8ce-5d99bcbaac05',
-    isActive: false,
     balance: '$1,547.73',
     gender: 'female'
   },
@@ -56,3 +54,5 @@ const usersArray = [
     gender: 'female'
   }
 ];
+
+module.exports = usersArray
