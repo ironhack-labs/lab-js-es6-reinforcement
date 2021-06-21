@@ -2,14 +2,17 @@
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
 
+let usersArray = require('./data')
+
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames
 };
 
-getFirstNames(usersArray);
+//getFirstNames(usersArray);
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -18,10 +21,14 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  let fullName = []
+  for (let user of arr) {
+    fullName.push(`${user.firstName} ${user.lastName}`)
+  }
+  return fullName
 };
 
-getFullNames(usersArray);
+//getFullNames(usersArray);
 // expected output:
 // [ 'Kirby Doyle', 'Tracie May', 'Kendra Hines', 'Kinney Howard',
 //   'Howard Gilmore', 'Rachelle Schneider', 'Lizzie Alford' ]
@@ -31,10 +38,15 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  let usersDetails = []
+  for (let user of arr) {
+    let { firstName, lastName, balance } = user
+    usersDetails.push(firstName, lastName, balance)
+  }
+  return usersDetails
 };
 
-getUsersCreditDetails(usersArray);
+//getUsersCreditDetails(usersArray);
 // expected output:
 // [ { firstName: 'Kirby', lastName: 'Doyle', balance: '$3,570.06' },
 // { firstName: 'Tracie', lastName: 'May', balance: '$1,547.73' },
@@ -49,10 +61,19 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  let femaleUsers = []
+  let maleUsers = []
+  let filteredArray = users.forEach((elem) => {
+    if (elem.gender == "male") {
+      maleUsers.push(elem.firstName)
+    } else
+      femaleUsers.push(elem.firstName)
+  })
+  let merge = { femaleUsers, maleUsers }
+  return merge
 };
 
-genderView(usersArray);
+//genderView(usersArray);
 // expected output:
 // {
 //    femaleUsers: [ 'Tracie May', 'Kendra Hines', 'Rachelle Schneider', 'Lizzie Alford' ],
@@ -66,10 +87,11 @@ genderView(usersArray);
 const data = genderView(usersArray);
 
 const genderCount = data => {
-  // Your code goes here ...
+  console.log(`Female: ${data.femaleUsers.length}`)
+  console.log(`Male: ${data.maleUsers.length}`)
 };
 
-genderCount(data);
+//genderCount(data);
 // expected output:
 // Female: 4
 // Male: 3
@@ -78,9 +100,27 @@ genderCount(data);
 // Bonus - Iteration 6
 // ***************************************************************************
 
+//remover o dolar sign, split, and join.
 const promo20 = users => {
-  // Your code goes here ...
-};
+  let clone = [...users]
+  for (let elem of clone) {
+    let balanceWithout$ = elem.balance.slice(1, elem.balance.length)
+    let balanceSplit = balanceWithout$.split(",")
+    let balanceJoin = balanceSplit.join('')
+    let balanceNumber = Number(balanceJoin)
+    elem.balance1 = balanceNumber
+  }
+  let filteredElements = clone.filter((elem1) => {
+    return elem1.balance1 > 20000
+  })
+  filteredElements.forEach((elem2) => {
+    console.log(`Dear ${elem2.firstName}, since your balance is ${elem2.balance}, you are eligible to apply for this awesome credit card.`)
+
+  })
+  return filteredElements
+}
+
+promo20(usersArray)
 
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
@@ -91,10 +131,15 @@ const promo20 = users => {
 // ***************************************************************************
 
 const addActive = users => {
-  // Your code goes here ...
+  for (let elem of users) {
+    elem.isActive = true
+  }
+  return users
 };
 
-addActive(usersArray);
+//console.log(addActive(usersArray))
+
+// addActive(usersArray);
 // expected output:
 // [
 //    { firstName: 'Kirby',
