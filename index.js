@@ -3,6 +3,8 @@
 // ***************************************************************************
 let usersArray = require('./data.js')
 
+/// ******** Partnered with Ellen ******** ///
+
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
