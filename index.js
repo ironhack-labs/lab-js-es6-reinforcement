@@ -1,12 +1,16 @@
 // ***************************************************************************
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
+let usersArray = require("./data");
 
-const getFirstNames = arr => {
-  const userFirstNames = [];
+const getFirstNames = (arr) => {
+  const userFirstNames = []; //  scope is in the fuction locally
   for (let user of arr) {
-    // Your code goes here ...
+    const { firstName } = user; // creating new array
+    userFirstNames.push(firstName); // pushing into the array
   }
+  console.log(userFirstNames);
+  return userFirstNames;
 };
 
 getFirstNames(usersArray);
@@ -17,8 +21,15 @@ getFirstNames(usersArray);
 // Iteration 2 - `for...of` loop and ES6 string literals `${}`
 // ***************************************************************************
 
-const getFullNames = arr => {
-  // Your code goes here ...
+const getFullNames = (arr) => {
+  const userFullNames = []; //  scope is in the fuction locally
+  for (let user of arr) {
+    const { firstName, lastName } = user; // creating new array
+    userFullNames.push(`${firstName} ${lastName}`); // pushing into the array
+  }
+  console.log(userFullNames);
+
+  return userFullNames;
 };
 
 getFullNames(usersArray);
@@ -30,8 +41,24 @@ getFullNames(usersArray);
 // Iteration 3 - ES6 destructuring , for of loop, object literal
 // ***************************************************************************
 
-const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+const getUsersCreditDetails = (arr) => {
+  const userCredit = []; //  scope is in the fuction locally
+  for (let user of arr) {
+    const { firstName, lastName, balance } = user;
+
+    const userDetails = {
+      firstName,
+      lastName,
+      balance,
+    };
+    //console.log(userDetails)
+    userCredit.push(userDetails);
+    console.log(userCredit);
+  }
+
+  // console.log( userCredit)
+
+  return userCredit;
 };
 
 getUsersCreditDetails(usersArray);
@@ -48,8 +75,21 @@ getUsersCreditDetails(usersArray);
 // Iteration 4 - practice `.filter()` method and how to return two elements
 // ***************************************************************************
 
-const genderView = users => {
-  // Your code goes here ...
+const genderView = (users) => {
+  let femaleUsers = getFullNames(
+    users.filter((user) => {
+      return user.gender === "female";
+    })
+  );
+  console.log(femaleUsers);
+  //    return users.gender==='female');
+  let maleUsers = getFullNames(
+    users.filter((user) => {
+      return user.gender === "male";
+    })
+  );
+  console.log(maleUsers);
+  return { femaleUsers, maleUsers };
 };
 
 genderView(usersArray);
@@ -65,8 +105,18 @@ genderView(usersArray);
 
 const data = genderView(usersArray);
 
-const genderCount = data => {
-  // Your code goes here ...
+const genderCount = (data) => {
+  console.log(data);
+
+  const countByGender = {
+    Female: data.femaleUsers.length,
+    Male: data.maleUsers.length,
+  };
+
+  // issues with  understanding this syntax and why this isnt working
+  console.log(countByGender);
+
+  return countByGender;
 };
 
 genderCount(data);
@@ -78,10 +128,19 @@ genderCount(data);
 // Bonus - Iteration 6
 // ***************************************************************************
 
-const promo20 = users => {
-  // Your code goes here ...
+const promo20 = (users) => {
+  users.forEach((user) => {
+    //     I want to convert the balance into number : i remove dollars and commas,
+    let personBal = user.balance.replace("$", "").replace(",", "");
+    // when I have my balance in number, I can compare it to 20 000
+    if (personBal > 20000) {
+      console.log(
+        `Dear ${user.firstName}, since your balance is ${user.balance}, you are eligible to apply for this awesome credit card.`
+      );
+    }
+  });
 };
-
+promo20(usersArray);
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
 // Dear Rachelle, since your balance is $35,121.49, you are eligible to apply for this awesome credit card.
@@ -90,8 +149,11 @@ const promo20 = users => {
 // Bonus - Iteration 7
 // ***************************************************************************
 
-const addActive = users => {
-  // Your code goes here ...
+const addActive = (users) => {
+  for (let user of users) {
+    user.isActive = true;
+    console.log(users);
+  }
 };
 
 addActive(usersArray);
