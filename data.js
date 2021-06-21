@@ -1,3 +1,7 @@
+
+
+
+
 const usersArray = [
   {
     firstName: 'Kirby',
@@ -56,3 +60,7 @@ const usersArray = [
     gender: 'female'
   }
 ];
+
+
+
+  module.exports = usersArray    //has to be at bottom! 
