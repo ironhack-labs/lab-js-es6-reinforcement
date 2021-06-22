@@ -1,3 +1,8 @@
+
+// console.log('hey there')
+
+
+
 const usersArray = [
   {
     firstName: 'Kirby',
@@ -56,3 +61,7 @@ const usersArray = [
     gender: 'female'
   }
 ];
+
+
+
+module.exports = usersArray

@@ -1,3 +1,8 @@
+
+
+let usersArray = require('./data.js')
+// console.log('hey')
+
 // ***************************************************************************
 // Iteration 1 - `for...of` loop
 // ***************************************************************************
@@ -5,9 +10,13 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames
+  // console.log(userFirstNames)
+
 };
+
 
 getFirstNames(usersArray);
 // expected output:
@@ -18,7 +27,12 @@ getFirstNames(usersArray);
 // ***************************************************************************
 
 const getFullNames = arr => {
-  // Your code goes here ...
+  const userFullNames = [];
+  for (let user of arr) {
+    userFullNames.push(`${user.firstName} ${user.lastName}`)
+  }
+  return userFullNames
+  // console.log(userFullNames)
 };
 
 getFullNames(usersArray);
@@ -31,8 +45,16 @@ getFullNames(usersArray);
 // ***************************************************************************
 
 const getUsersCreditDetails = arr => {
-  // Your code goes here ...
+  let usersCreditDetails = []
+  for (let user of arr) {
+    const { firstName, lastName, balance } = user
+    let userDetails = { firstName, lastName, balance }
+    usersCreditDetails.push(userDetails)
+  }
+  return usersCreditDetails
+  // console.log(userCreditDetails)
 };
+// console.log(getUsersCreditDetails(usersArray))
 
 getUsersCreditDetails(usersArray);
 // expected output:
@@ -49,8 +71,25 @@ getUsersCreditDetails(usersArray);
 // ***************************************************************************
 
 const genderView = users => {
-  // Your code goes here ...
+  maleUsers = []
+  femaleUsers = []
+  let males = users.filter(elem => {
+    return elem.gender == 'male'
+  })
+  for (let users of males) {
+    maleUsers.push(`${users.firstName} ${users.lastName}`)
+  }
+
+  let females = users.filter(elem => {
+    return elem.gender == 'female'
+  })
+  for (let users of females) {
+    femaleUsers.push(`${users.firstName} ${users.lastName}`)
+  }
+  return { femaleUsers, maleUsers }
 };
+
+console.log(genderView(usersArray))
 
 genderView(usersArray);
 // expected output:
