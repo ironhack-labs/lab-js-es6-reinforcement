@@ -5,11 +5,13 @@
 const getFirstNames = arr => {
   const userFirstNames = [];
   for (let user of arr) {
-    // Your code goes here ...
+    userFirstNames.push(user.firstName)
   }
+  return userFirstNames
 };
 
 getFirstNames(usersArray);
+
 // expected output:
 // [ 'Kirby', 'Tracie', 'Kendra', 'Kinney', 'Howard', 'Rachelle', 'Lizzie' ]
 
@@ -19,6 +21,12 @@ getFirstNames(usersArray);
 
 const getFullNames = arr => {
   // Your code goes here ...
+  const userFullName = [];
+  for (let user of arr){
+    userFullName.push(`${user.firstName} ${user.lastName}`)
+  };
+
+  return userFullName
 };
 
 getFullNames(usersArray);
@@ -32,6 +40,13 @@ getFullNames(usersArray);
 
 const getUsersCreditDetails = arr => {
   // Your code goes here ...
+   const usersCreditDetails = [];
+   for (let user of arr){
+    const {firstName, lastName, balance} = user;
+    const userDetails = {firstName, lastName, balance}
+    usersCreditDetails.push(userDetails)
+   }
+   return usersCreditDetails
 };
 
 getUsersCreditDetails(usersArray);
@@ -50,6 +65,18 @@ getUsersCreditDetails(usersArray);
 
 const genderView = users => {
   // Your code goes here ...
+  const femaleUsers = [];
+  const maleUsers = []
+  
+
+  users.filter((user) => { 
+    if(user.gender === 'female'){
+      femaleUsers.push(`${user.firstName} ${user.lastName}`)
+    } else if(user.gender === 'male'){
+      maleUsers.push(`${user.firstName} ${user.lastName}`)
+    }
+  })
+  return {femaleUsers, maleUsers}
 };
 
 genderView(usersArray);
@@ -67,6 +94,7 @@ const data = genderView(usersArray);
 
 const genderCount = data => {
   // Your code goes here ...
+
 };
 
 genderCount(data);
@@ -80,7 +108,16 @@ genderCount(data);
 
 const promo20 = users => {
   // Your code goes here ...
+  users.forEach(user => {
+    let balance = user.balance.replace('$', '');
+    balance = parseFloat(balance);
+    if (balance >= 20){
+      return `Dear ${user.firstName}, since your balance is ${user.balance}, you are eligible to apply for this awesome credit card.`
+    }
+  });
 };
+
+console.log(promo20(usersArray))
 
 // expected output:
 // Dear Howard, since your balance is $21,307.75, you are eligible to apply for this awesome credit card.
